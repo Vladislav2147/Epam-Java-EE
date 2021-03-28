@@ -1,53 +1,18 @@
 package com.shichko.first_task.service;
 
 import com.shichko.first_task.entity.IntArray;
+import com.shichko.first_task.exception.ArrayException;
 
 import java.util.function.Predicate;
 
-public class CalculationService {
-    private IntArray array;
+public interface CalculationService {
+    void replaceByCondition(IntArray array, int replaced, Predicate<Integer> condition) throws ArrayException;
 
-    public CalculationService(IntArray array) {
-        this.array = array;
-    }
+    int sum(IntArray array);
 
-    public void replaceByCondition(int replaced, Predicate<Integer> condition) {
-        for (int i = 0; i < array.length(); i++) {
-            if (condition.test(array.get(i))) {
-                array.set(i, replaced);
-            }
-        }
-    }
+    double getAverage(IntArray array) throws ArrayException;
 
-    public int getSum() {
-        int sum = 0;
-        for (int item: array) {
-            sum += item;
-        }
-        return sum;
-    }
+    int countPositive(IntArray array);
 
-    public double getAverage() {
-        return (double) getSum() / array.length();
-    }
-
-    public int countPositive() {
-        int amount = 0;
-        for (int item: array) {
-            if (item > 0) {
-                amount++;
-            }
-        }
-        return amount;
-    }
-
-    public int countNegative() {
-        int amount = 0;
-        for (int item: array) {
-            if (item < 0) {
-                amount++;
-            }
-        }
-        return amount;
-    }
+    int countNegative(IntArray array);
 }

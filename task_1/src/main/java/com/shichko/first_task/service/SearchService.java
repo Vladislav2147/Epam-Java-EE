@@ -2,32 +2,11 @@ package com.shichko.first_task.service;
 
 import com.shichko.first_task.entity.IntArray;
 
-public class SearchService {
+import java.util.Optional;
 
-    private IntArray array;
+public interface SearchService {
 
-    public SearchService(IntArray array) {
-        this.array = array;
-    }
+    Optional<Integer> findMin(IntArray array);
 
-    public int findMin() {
-        int min = Integer.MAX_VALUE;
-        for (int item: array) {
-            if (item < min) {
-                min = item;
-            }
-        }
-        return min;
-    }
-
-    public int findMax() {
-        int max = Integer.MIN_VALUE;
-        for (int item: array) {
-            if (item > max) {
-                max = item;
-            }
-        }
-        return max;
-    }
-
+    Optional<Integer> findMax(IntArray array);
 }
