@@ -6,6 +6,7 @@ import com.shichko.first_task.exception.ArrayException;
 import java.util.function.Predicate;
 
 import com.shichko.first_task.service.CalculationService;
+import com.shichko.first_task.validator.IntArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,7 +37,8 @@ public class CalculationServiceImpl implements CalculationService {
 
     @Override
     public double getAverage(IntArray array) throws ArrayException {
-        if (array.length() == 0) {
+        if (IntArrayValidator.isEmpty(array)) {
+            logger.log(Level.ERROR, "Array is empty");
             throw new ArrayException("Array has no elements");
         }
         double average = (double) sum(array) / array.length();
