@@ -24,42 +24,53 @@ public class CalculationServiceImplTest {
 
     @Test
     public void testReplaceByCondition() throws ArrayException {
+
         Predicate<Integer> condition = item -> item % 2 == 0;
         calculationService.replaceByCondition(intArray, 1, condition);
+
         assertTrue(Arrays.stream(intArray.getElements()).boxed().noneMatch(condition));
     }
 
     @Test
     public void testSum() {
+
         int actual = calculationService.sum(intArray);
         int expected = Arrays.stream(intArray.getElements()).sum();
+
         assertEquals(actual, expected);
     }
 
     @Test
     public void testGetAverage() throws ArrayException {
+
         double actual = calculationService.getAverage(intArray);
         double expected = (double)Arrays.stream(intArray.getElements()).sum() / intArray.length();
+
         assertEquals(actual, expected, .00001);
     }
 
     @Test(expectedExceptions = ArrayException.class)
     public void testGetAverageThrowsOnEmptyArray() throws ArrayException {
+
         IntArray emptyArray = new IntArray(new int[0]);
         calculationService.getAverage(emptyArray);
     }
 
     @Test
     public void testCountPositive() {
+
         int actual = calculationService.countPositive(intArray);
         long expected = Arrays.stream(intArray.getElements()).filter(num -> num > 0).count();
+
         assertEquals(actual, expected);
     }
 
     @Test
     public void testCountNegative() {
+
         int actual = calculationService.countNegative(intArray);
         long expected = Arrays.stream(intArray.getElements()).filter(num -> num < 0).count();
+
         assertEquals(actual, expected);
     }
 }

@@ -39,6 +39,7 @@ public class IntArrayParserTest {
 
     @Test
     public void testParseValidData() {
+
         IntArray expected = new IntArray(expectedElements);
         IntArray actual = parser.parse(validLines).get();
 
@@ -47,6 +48,7 @@ public class IntArrayParserTest {
 
     @Test
     public void testParseInvalidDataReturnsOptionalEmpty() {
+
         Optional<IntArray> actual = parser.parse(invalidLines);
 
         assertEquals(actual, Optional.empty());
@@ -54,6 +56,7 @@ public class IntArrayParserTest {
 
     @Test
     public void testParseNullReturnsOptionalEmpty() {
+
         Optional<IntArray> actual = parser.parse(null);
 
         assertEquals(actual, Optional.empty());
@@ -63,4 +66,5 @@ public class IntArrayParserTest {
     public void testParseLineInvalidThrowsArrayException() throws ArrayException {
         parser.parseLine(invalidLines.get(0));
     }
+
 }

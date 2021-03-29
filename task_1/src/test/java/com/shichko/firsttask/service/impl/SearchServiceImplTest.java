@@ -23,15 +23,19 @@ public class SearchServiceImplTest {
 
     @Test
     public void testFindMin() {
+
         Optional<Integer> actual = searchService.findMin(intArray);
         Optional<Integer> expected = Arrays.stream(intArray.getElements()).boxed().min(Comparator.comparingInt(o -> o));
+
         assertEquals(actual, expected);
     }
 
     @Test
     public void testFindMax() {
+
         Optional<Integer> actual = searchService.findMax(intArray);
         Optional<Integer> expected = Arrays.stream(intArray.getElements()).boxed().max(Comparator.comparingInt(o -> o));
+
         assertEquals(actual, expected);
     }
 }

@@ -29,6 +29,7 @@ public class FileReaderTest {
 
     @BeforeTest
     public void init() throws IOException {
+
         fileReader = new FileReader();
 
         directory = new File(DIRECTORY_PATH);
@@ -46,8 +47,10 @@ public class FileReaderTest {
 
     @Test
     public void testReadLinesOnValidFile() throws FileReadException {
+
         List<String> expected = Arrays.stream(VALID_FILE_DATA.split("\n")).collect(Collectors.toList());
         List<String> actual = fileReader.readLines(validFile);
+
         assertEquals(actual, expected);
     }
     @Test(expectedExceptions = FileReadException.class)
