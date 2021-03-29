@@ -1,15 +1,15 @@
-package com.shichko.first_task.service.impl;
+package com.shichko.firsttask.service.impl;
 
-import com.shichko.first_task.entity.IntArray;
-import com.shichko.first_task.exception.ArrayException;
-import com.shichko.first_task.service.SortService;
+import com.shichko.firsttask.entity.IntArray;
+import com.shichko.firsttask.exception.ArrayException;
+import com.shichko.firsttask.service.SortService;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class SortServiceImplTest {
 

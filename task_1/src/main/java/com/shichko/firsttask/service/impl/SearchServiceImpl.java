@@ -1,8 +1,8 @@
-package com.shichko.first_task.service.impl;
+package com.shichko.firsttask.service.impl;
 
-import com.shichko.first_task.entity.IntArray;
-import com.shichko.first_task.service.SearchService;
-import com.shichko.first_task.validator.IntArrayValidator;
+import com.shichko.firsttask.entity.IntArray;
+import com.shichko.firsttask.service.SearchService;
+import com.shichko.firsttask.validator.IntArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

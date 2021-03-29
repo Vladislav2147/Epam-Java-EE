@@ -1,4 +1,4 @@
-package com.shichko.first_task.exception;
+package com.shichko.firsttask.exception;
 
 public class ArrayException extends Exception {
     public ArrayException(String message) {

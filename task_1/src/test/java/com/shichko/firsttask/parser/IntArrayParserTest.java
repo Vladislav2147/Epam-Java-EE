@@ -1,7 +1,7 @@
-package com.shichko.first_task.parser;
+package com.shichko.firsttask.parser;
 
-import com.shichko.first_task.entity.IntArray;
-import com.shichko.first_task.exception.ArrayException;
+import com.shichko.firsttask.entity.IntArray;
+import com.shichko.firsttask.exception.ArrayException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 

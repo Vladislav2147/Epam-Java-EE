@@ -1,7 +1,7 @@
-package com.shichko.first_task.service;
+package com.shichko.firsttask.service;
 
-import com.shichko.first_task.entity.IntArray;
-import com.shichko.first_task.exception.ArrayException;
+import com.shichko.firsttask.entity.IntArray;
+import com.shichko.firsttask.exception.ArrayException;
 
 import java.util.function.Predicate;
 

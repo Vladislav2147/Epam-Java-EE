@@ -1,16 +1,15 @@
-package com.shichko.first_task.service.impl;
+package com.shichko.firsttask.service.impl;
 
-import com.shichko.first_task.entity.IntArray;
-import com.shichko.first_task.service.SearchService;
+import com.shichko.firsttask.entity.IntArray;
+import com.shichko.firsttask.service.SearchService;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Optional;
-import java.util.OptionalInt;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class SearchServiceImplTest {
 
