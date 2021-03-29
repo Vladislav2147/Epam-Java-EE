@@ -1,6 +1,6 @@
-package com.shichko.firsttask.service;
+package com.shichko.task.service;
 
-import com.shichko.firsttask.entity.IntArray;
+import com.shichko.task.entity.IntArray;
 
 import java.util.Optional;
 

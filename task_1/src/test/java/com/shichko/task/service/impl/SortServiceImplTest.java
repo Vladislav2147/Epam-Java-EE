@@ -1,8 +1,8 @@
-package com.shichko.firsttask.service.impl;
+package com.shichko.task.service.impl;
 
-import com.shichko.firsttask.entity.IntArray;
-import com.shichko.firsttask.exception.ArrayException;
-import com.shichko.firsttask.service.SortService;
+import com.shichko.task.entity.IntArray;
+import com.shichko.task.exception.ArrayException;
+import com.shichko.task.service.SortService;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

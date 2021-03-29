@@ -1,6 +1,6 @@
-package com.shichko.firsttask.validator;
+package com.shichko.task.validator;
 
-import com.shichko.firsttask.entity.IntArray;
+import com.shichko.task.entity.IntArray;
 
 public class IntArrayValidator {
     public static boolean isEmpty(IntArray array) {

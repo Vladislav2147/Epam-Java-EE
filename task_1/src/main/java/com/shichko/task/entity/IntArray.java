@@ -1,6 +1,6 @@
-package com.shichko.firsttask.entity;
+package com.shichko.task.entity;
 
-import com.shichko.firsttask.exception.ArrayException;
+import com.shichko.task.exception.ArrayException;
 
 import java.util.Arrays;
 import java.util.Iterator;

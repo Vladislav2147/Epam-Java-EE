@@ -1,4 +1,4 @@
-package com.shichko.firsttask.exception;
+package com.shichko.task.exception;
 
 public class FileReadException extends Exception {
 

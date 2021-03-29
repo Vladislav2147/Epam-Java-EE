@@ -1,8 +1,8 @@
-package com.shichko.firsttask.parser;
+package com.shichko.task.parser;
 
-import com.shichko.firsttask.entity.IntArray;
-import com.shichko.firsttask.exception.ArrayException;
-import com.shichko.firsttask.validator.IntArrayValidator;
+import com.shichko.task.entity.IntArray;
+import com.shichko.task.exception.ArrayException;
+import com.shichko.task.validator.IntArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

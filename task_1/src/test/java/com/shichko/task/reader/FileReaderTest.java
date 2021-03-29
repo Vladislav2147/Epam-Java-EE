@@ -1,6 +1,6 @@
-package com.shichko.firsttask.reader;
+package com.shichko.task.reader;
 
-import com.shichko.firsttask.exception.FileReadException;
+import com.shichko.task.exception.FileReadException;
 import org.apache.commons.io.FileUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

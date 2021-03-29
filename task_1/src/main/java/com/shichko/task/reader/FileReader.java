@@ -1,6 +1,6 @@
-package com.shichko.firsttask.reader;
+package com.shichko.task.reader;
 
-import com.shichko.firsttask.exception.FileReadException;
+import com.shichko.task.exception.FileReadException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
