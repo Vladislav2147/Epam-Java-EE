@@ -16,12 +16,12 @@ public class IntArrayParserTest {
     private IntArrayParser parser;
     private List<String> validLines;
     private List<String> invalidLines;
-    private List<String> nullData;
 
     private int[] expectedElements;
 
     @BeforeTest
     public void init() {
+
         parser = new IntArrayParser();
 
         expectedElements = new int[] {1, 2, 3, 4, 5, 6};
@@ -35,8 +35,6 @@ public class IntArrayParserTest {
         invalidLines.add("skl;kfmd;");
         invalidLines.add("1 2. 3 4 5 6");
         invalidLines.add("5 6 d7 8");
-
-        nullData = null;
     }
 
     @Test
@@ -50,6 +48,13 @@ public class IntArrayParserTest {
     @Test
     public void testParseInvalidDataReturnsOptionalEmpty() {
         Optional<IntArray> actual = parser.parse(invalidLines);
+
+        assertEquals(actual, Optional.empty());
+    }
+
+    @Test
+    public void testParseNullReturnsOptionalEmpty() {
+        Optional<IntArray> actual = parser.parse(null);
 
         assertEquals(actual, Optional.empty());
     }
