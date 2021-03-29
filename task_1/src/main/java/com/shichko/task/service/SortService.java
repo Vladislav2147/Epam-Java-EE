@@ -4,9 +4,9 @@ import com.shichko.task.entity.IntArray;
 import com.shichko.task.exception.ArrayException;
 
 public interface SortService {
-    IntArray bubbleSort(IntArray array) throws ArrayException;
+    void bubbleSort(IntArray array) throws ArrayException;
 
-    IntArray insertionSort(IntArray array) throws ArrayException;
+    void insertionSort(IntArray array) throws ArrayException;
 
-    IntArray selectionSort(IntArray array) throws ArrayException;
+    void selectionSort(IntArray array) throws ArrayException;
 }
