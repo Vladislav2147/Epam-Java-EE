@@ -21,7 +21,8 @@ public class IntArrayParser {
         }
         for (String line: lines) {
             try {
-                return Optional.of(parseLine(line));
+                IntArray intArray = parseLine(line);
+                return Optional.of(intArray);
             } catch (ArrayException e) {
                 logger.log(Level.WARN, "Invalid line causes ArrayException: " + e.getMessage());
             }
