@@ -5,10 +5,9 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,17 +15,16 @@ public class FileReader {
 
     static Logger logger = LogManager.getLogger();
 
-    public List<String> readLines(String filename) throws FileReadException {
-        Path path = Paths.get(filename);
-        if (Files.exists(path) && !Files.isDirectory(path) && Files.isReadable(path)) {
+    public List<String> readLines(File file) throws FileReadException {
+        if (file.exists() && file.isFile()) {
             try {
-                return Files.lines(path).collect(Collectors.toList());
+                return Files.lines(file.toPath()).collect(Collectors.toList());
             } catch (IOException e) {
                 logger.log(Level.ERROR, "Error with file reading", e);
                 throw new FileReadException("Error with file reading", e);
             }
         } else {
-            throw new FileReadException("Invalid file: " + filename);
+            throw new FileReadException("Invalid file: " + file.getAbsolutePath());
         }
     }
 }

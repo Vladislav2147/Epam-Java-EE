@@ -16,17 +16,21 @@ public class IntArrayParser {
     private static final Logger logger = LogManager.getLogger();
 
     public Optional<IntArray> parse(List<String> lines) {
+        if (lines == null) {
+            return Optional.empty();
+        }
         for (String line: lines) {
             try {
                 return Optional.of(parseLine(line));
             } catch (ArrayException e) {
-                logger.log(Level.ERROR, "Invalid line", e);
+                logger.log(Level.WARN, "Invalid line causes ArrayException: " + e.getMessage());
             }
         }
+        logger.log(Level.WARN, "Return Optional.empty()");
         return Optional.empty();
     }
 
-    private IntArray parseLine(String line) throws ArrayException {
+    public IntArray parseLine(String line) throws ArrayException {
         try {
             int[] array = Arrays
                     .stream(line.split(" "))
@@ -39,7 +43,7 @@ public class IntArrayParser {
             }
             return intArray;
         } catch (NumberFormatException e) {
-            logger.log(Level.ERROR, "Invalid item", e);
+            logger.log(Level.WARN, "Invalid item causes NumberFormatException: " + e.getMessage());
             throw new ArrayException("Invalid item", e);
         }
     }
