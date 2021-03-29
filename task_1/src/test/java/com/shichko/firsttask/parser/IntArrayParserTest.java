@@ -24,11 +24,11 @@ public class IntArrayParserTest {
 
         parser = new IntArrayParser();
 
-        expectedElements = new int[] {1, 2, 3, 4, 5, 6};
+        expectedElements = new int[] {1, -2, 3, 4, 5, 6};
 
         validLines = new ArrayList<>();
         validLines.add("skl;kfmd;");
-        validLines.add("1 2 3 4 5 6");
+        validLines.add("1 -2 3 4 5 6");
         validLines.add("5 6 7 8");
 
         invalidLines = new ArrayList<>();
