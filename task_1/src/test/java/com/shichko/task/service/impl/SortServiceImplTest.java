@@ -25,7 +25,7 @@ public class SortServiceImplTest {
     @BeforeMethod
     public void initIntArray() {
 
-        int[] elements = new int[] {1, -10, 40, 12, 24, -1000};
+        int[] elements = new int[]{1, -10, 40, 12, 24, -1000};
         intArray = new IntArray(elements);
 
         Arrays.sort(elements);
@@ -55,4 +55,5 @@ public class SortServiceImplTest {
 
         assertEquals(intArray.getElements(), sortedArray.getElements());
     }
+
 }

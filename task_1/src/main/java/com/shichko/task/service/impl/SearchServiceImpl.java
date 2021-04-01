@@ -7,16 +7,16 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Optional;
+import java.util.OptionalInt;
 
 public class SearchServiceImpl implements SearchService {
 
     private static Logger logger = LogManager.getLogger();
 
     @Override
-    public Optional<Integer> findMin(IntArray array) {
+    public OptionalInt findMin(IntArray array) {
         if (IntArrayValidator.isEmpty(array)) {
-            return Optional.empty();
+            return OptionalInt.empty();
         }
         int min = Integer.MAX_VALUE;
         for (int item: array) {
@@ -24,15 +24,15 @@ public class SearchServiceImpl implements SearchService {
                 min = item;
             }
         }
-        Optional<Integer> optionalMin = Optional.of(min);
+        OptionalInt optionalMin = OptionalInt.of(min);
         logger.log(Level.INFO, "min value is: " + optionalMin);
         return optionalMin;
     }
 
     @Override
-    public Optional<Integer> findMax(IntArray array) {
+    public OptionalInt findMax(IntArray array) {
         if (IntArrayValidator.isEmpty(array)) {
-            return Optional.empty();
+            return OptionalInt.empty();
         }
         int max = Integer.MIN_VALUE;
         for (int item: array) {
@@ -40,7 +40,7 @@ public class SearchServiceImpl implements SearchService {
                 max = item;
             }
         }
-        Optional<Integer> optionalMax = Optional.of(max);
+        OptionalInt optionalMax = OptionalInt.of(max);
         logger.log(Level.INFO, "max value is: " + optionalMax);
         return optionalMax;
     }

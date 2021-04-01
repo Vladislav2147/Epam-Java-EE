@@ -1,0 +1,29 @@
+package com.shichko.task.service.impl;
+
+import com.shichko.task.entity.IntArray;
+import com.shichko.task.service.SearchService;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.Arrays;
+import java.util.OptionalInt;
+
+public class SearchServiceStreamImpl implements SearchService {
+
+    private static Logger logger = LogManager.getLogger();
+
+    @Override
+    public OptionalInt findMin(IntArray array) {
+        OptionalInt min = Arrays.stream(array.getElements()).min();
+        logger.log(Level.INFO, "min value is: " + min);
+        return min;
+    }
+
+    @Override
+    public OptionalInt findMax(IntArray array) {
+        OptionalInt max = Arrays.stream(array.getElements()).max();
+        logger.log(Level.INFO, "max value is: " + max);
+        return max;
+    }
+}

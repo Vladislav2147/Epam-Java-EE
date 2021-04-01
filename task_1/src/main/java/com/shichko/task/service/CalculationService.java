@@ -12,7 +12,7 @@ public interface CalculationService {
 
     double getAverage(IntArray array) throws ArrayException;
 
-    int countPositive(IntArray array);
+    long countPositive(IntArray array);
 
-    int countNegative(IntArray array);
+    long countNegative(IntArray array);
 }

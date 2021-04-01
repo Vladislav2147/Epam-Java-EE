@@ -46,8 +46,8 @@ public class CalculationServiceImpl implements CalculationService {
     }
 
     @Override
-    public int countPositive(IntArray array) {
-        int amount = 0;
+    public long countPositive(IntArray array) {
+        long amount = 0;
         for (int item: array) {
             if (item > 0) {
                 amount++;
@@ -58,8 +58,8 @@ public class CalculationServiceImpl implements CalculationService {
     }
 
     @Override
-    public int countNegative(IntArray array) {
-        int amount = 0;
+    public long countNegative(IntArray array) {
+        long amount = 0;
         for (int item: array) {
             if (item < 0) {
                 amount++;

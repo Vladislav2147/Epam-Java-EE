@@ -59,7 +59,7 @@ public class CalculationServiceImplTest {
     @Test
     public void testCountPositive() {
 
-        int actual = calculationService.countPositive(intArray);
+        long actual = calculationService.countPositive(intArray);
         long expected = Arrays.stream(intArray.getElements()).filter(num -> num > 0).count();
 
         assertEquals(actual, expected);
@@ -68,7 +68,7 @@ public class CalculationServiceImplTest {
     @Test
     public void testCountNegative() {
 
-        int actual = calculationService.countNegative(intArray);
+        long actual = calculationService.countNegative(intArray);
         long expected = Arrays.stream(intArray.getElements()).filter(num -> num < 0).count();
 
         assertEquals(actual, expected);
