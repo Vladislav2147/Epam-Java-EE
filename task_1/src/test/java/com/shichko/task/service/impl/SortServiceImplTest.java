@@ -55,4 +55,12 @@ public class SortServiceImplTest {
         assertEquals(intArray.getElements(), sortedArray.getElements());
     }
 
+    @Test
+    public void testStreamSort() {
+
+        sortService.streamSort(intArray);
+
+        assertEquals(intArray.getElements(), sortedArray.getElements());
+    }
+
 }

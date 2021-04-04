@@ -6,6 +6,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+
 public class SortServiceImpl implements SortService {
 
     private static Logger logger = LogManager.getLogger();
@@ -52,6 +54,15 @@ public class SortServiceImpl implements SortService {
             array.set(i, smallerNumber);
         }
         logger.log(Level.INFO, "sorted array: " + array);
+    }
+
+    @Override
+    public void streamSort(IntArray array) {
+        int[] sortedElements = Arrays
+                .stream(array.getElements())
+                .sorted()
+                .toArray();
+        array.setElements(sortedElements);
     }
 
 }

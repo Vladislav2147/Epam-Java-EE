@@ -8,4 +8,6 @@ public interface SortService {
     void insertionSort(IntArray array);
 
     void selectionSort(IntArray array);
+
+    void streamSort(IntArray array);
 }
