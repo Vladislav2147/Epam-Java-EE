@@ -1,6 +1,7 @@
 package com.shichko.task.service.impl;
 
 import com.shichko.task.entity.IntArray;
+import com.shichko.task.exception.ArrayException;
 import com.shichko.task.service.CalculationService;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -37,11 +38,14 @@ public class CalculationServiceStreamImpl implements CalculationService {
     }
 
     @Override
-    public double getAverage(IntArray array) {
+    public double getAverage(IntArray array) throws ArrayException {
         double average = Arrays
                 .stream(array.getElements())
                 .average()
-                .orElse(0);
+                .orElseThrow(() -> {
+                    logger.log(Level.ERROR, "Array is empty");
+                    return new ArrayException("Array has no elements");
+                });
         logger.log(Level.INFO, "average = " + average);
         return average;
     }

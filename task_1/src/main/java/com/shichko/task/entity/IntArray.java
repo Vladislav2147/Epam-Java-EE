@@ -64,7 +64,7 @@ public class IntArray implements Iterable<Integer> {
     public String toString() {
         return "IntArray: " + Arrays.toString(elements);
     }
-    
+
     private class IntArrayIterator implements Iterator<Integer> {
 
         private int currentIndex = 0;
