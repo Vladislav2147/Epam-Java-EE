@@ -31,6 +31,12 @@ public class IntArray implements Iterable<Integer> {
     }
 
     @Override
+    public Iterator<Integer> iterator() {
+        return new IntArrayIterator();
+    }
+
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -58,13 +64,7 @@ public class IntArray implements Iterable<Integer> {
     public String toString() {
         return "IntArray: " + Arrays.toString(elements);
     }
-
-    //TODO place in right order
-    @Override
-    public Iterator<Integer> iterator() {
-        return new IntArrayIterator();
-    }
-
+    
     private class IntArrayIterator implements Iterator<Integer> {
 
         private int currentIndex = 0;
