@@ -1,7 +1,6 @@
 package com.shichko.task.service.impl;
 
 import com.shichko.task.entity.IntArray;
-import com.shichko.task.exception.ArrayException;
 import com.shichko.task.service.SortService;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +11,7 @@ public class SortServiceImpl implements SortService {
     private static Logger logger = LogManager.getLogger();
 
     @Override
-    public void bubbleSort(IntArray array) throws ArrayException {
+    public void bubbleSort(IntArray array) {
         for (int i = 0; i < array.length(); i++) {
             for (int j = 0; j < array.length() - 1 - i; j++) {
                 if (array.get(j) > array.get(j + 1)) {
@@ -26,7 +25,7 @@ public class SortServiceImpl implements SortService {
     }
 
     @Override
-    public void insertionSort(IntArray array) throws ArrayException {
+    public void insertionSort(IntArray array) {
         for (int i = 1; i < array.length(); i++)
         {
             int valueToSort = array.get(i);
@@ -40,7 +39,7 @@ public class SortServiceImpl implements SortService {
     }
 
     @Override
-    public void selectionSort(IntArray array) throws ArrayException {
+    public void selectionSort(IntArray array) {
         for (int i = 0; i < array.length() - 1; i++)
         {
             int index = i;

@@ -1,7 +1,5 @@
 package com.shichko.task.entity;
 
-import com.shichko.task.exception.ArrayException;
-
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -17,20 +15,14 @@ public class IntArray implements Iterable<Integer> {
     }
 
     public void setElements(int[] elements) {
-        this.elements = elements;
+        this.elements = Arrays.copyOf(elements, elements.length);
     }
 
-    public int get(int index) throws ArrayException  {
-        if (index < 0 || index >= length()) {
-            throw new ArrayException("Index is out of range. Value: " + index + ", length: " + length());
-        }
+    public int get(int index) {
         return elements[index];
     }
 
-    public void set(int index, int value) throws ArrayException {
-        if (index < 0 || index >= length()) {
-            throw new ArrayException("Index is out of range. Value: " + index + ", length: " + length());
-        }
+    public void set(int index, int value) {
         elements[index] = value;
     }
 
@@ -67,6 +59,7 @@ public class IntArray implements Iterable<Integer> {
         return "IntArray: " + Arrays.toString(elements);
     }
 
+    //TODO place in right order
     @Override
     public Iterator<Integer> iterator() {
         return new IntArrayIterator();

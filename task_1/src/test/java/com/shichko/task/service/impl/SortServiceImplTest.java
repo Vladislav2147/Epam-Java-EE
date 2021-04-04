@@ -1,7 +1,6 @@
 package com.shichko.task.service.impl;
 
 import com.shichko.task.entity.IntArray;
-import com.shichko.task.exception.ArrayException;
 import com.shichko.task.service.SortService;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -33,7 +32,7 @@ public class SortServiceImplTest {
     }
 
     @Test
-    public void testBubbleSort() throws ArrayException {
+    public void testBubbleSort() {
 
         sortService.bubbleSort(intArray);
 
@@ -41,7 +40,7 @@ public class SortServiceImplTest {
     }
 
     @Test
-    public void testInsertionSort() throws ArrayException {
+    public void testInsertionSort() {
 
         sortService.insertionSort(intArray);
 
@@ -49,7 +48,7 @@ public class SortServiceImplTest {
     }
 
     @Test
-    public void testSelectionSort() throws ArrayException {
+    public void testSelectionSort() {
 
         sortService.selectionSort(intArray);
 
