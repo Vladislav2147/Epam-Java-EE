@@ -15,7 +15,7 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public OptionalInt findMin(IntArray array) {
-        if (IntArrayValidator.isEmpty(array)) {
+        if (IntArrayValidator.isNullOrEmpty(array)) {
             return OptionalInt.empty();
         }
         int min = Integer.MAX_VALUE;
@@ -31,7 +31,7 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public OptionalInt findMax(IntArray array) {
-        if (IntArrayValidator.isEmpty(array)) {
+        if (IntArrayValidator.isNullOrEmpty(array)) {
             return OptionalInt.empty();
         }
         int max = Integer.MIN_VALUE;

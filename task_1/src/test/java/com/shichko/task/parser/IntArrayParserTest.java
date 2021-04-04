@@ -1,7 +1,6 @@
 package com.shichko.task.parser;
 
 import com.shichko.task.entity.IntArray;
-import com.shichko.task.exception.ArrayException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -60,11 +59,6 @@ public class IntArrayParserTest {
         Optional<IntArray> actual = parser.parse(null);
 
         assertEquals(actual, Optional.empty());
-    }
-
-    @Test(expectedExceptions = ArrayException.class)
-    public void testParseLineInvalidThrowsArrayException() throws ArrayException {
-        parser.parseLine(invalidLines.get(0));
     }
 
 }

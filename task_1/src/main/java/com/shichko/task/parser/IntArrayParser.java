@@ -1,7 +1,6 @@
 package com.shichko.task.parser;
 
 import com.shichko.task.entity.IntArray;
-import com.shichko.task.exception.ArrayException;
 import com.shichko.task.validator.IntArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -16,36 +15,28 @@ public class IntArrayParser {
     private static final Logger logger = LogManager.getLogger();
 
     public Optional<IntArray> parse(List<String> lines) {
-        if (lines == null) {
-            return Optional.empty();
-        }
-        for (String line: lines) {
-            try {
-                IntArray intArray = parseLine(line);
-                return Optional.of(intArray);
-            } catch (ArrayException e) {
-                logger.log(Level.WARN, "Invalid line causes ArrayException: " + e.getMessage());
+        Optional<IntArray> result = Optional.empty();
+        if (lines != null) {
+            for (String line: lines) {
+                if (IntArrayValidator.isValid(line)) {
+                    IntArray intArray = parseLine(line);
+                    logger.log(Level.INFO, "Valid IntArray to return: " + intArray);
+                    result = Optional.of(intArray);
+                    break;
+                } else {
+                    logger.log(Level.WARN, "Invalid line: " + line);
+                }
             }
         }
-        logger.log(Level.WARN, "Return Optional.empty()");
-        return Optional.empty();
+        return result;
     }
 
-    public IntArray parseLine(String line) throws ArrayException {
-        try {
-            int[] array = Arrays
-                    .stream(line.split(" "))
-                    .mapToInt(Integer::parseInt)
-                    .toArray();
-            IntArray intArray = new IntArray(array);
-
-            if (IntArrayValidator.isEmpty(intArray)) {
-                throw new ArrayException("Array is empty");
-            }
-            return intArray;
-        } catch (NumberFormatException e) {
-            logger.log(Level.WARN, "Invalid item causes NumberFormatException: " + e.getMessage());
-            throw new ArrayException("Invalid item", e);
-        }
+    public IntArray parseLine(String line) {
+        int[] array = Arrays
+                .stream(line.split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        IntArray intArray = new IntArray(array);
+        return intArray;
     }
 }

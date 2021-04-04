@@ -36,7 +36,7 @@ public class CalculationServiceImpl implements CalculationService {
 
     @Override
     public double getAverage(IntArray array) throws ArrayException {
-        if (IntArrayValidator.isEmpty(array)) {
+        if (IntArrayValidator.isNullOrEmpty(array)) {
             logger.log(Level.ERROR, "Array is empty");
             throw new ArrayException("Array has no elements");
         }
