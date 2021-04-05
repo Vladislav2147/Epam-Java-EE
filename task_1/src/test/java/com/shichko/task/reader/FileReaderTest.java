@@ -20,7 +20,7 @@ public class FileReaderTest {
 
     private static final String VALID_FILE_NAME = "valid.txt";
     private static final String NOT_EXISTING_FILE_NAME = "not_exist.txt";
-    private static final String DIRECTORY_PATH = "src/test/resources";
+    private static final String DIRECTORY_PATH = "src/test/resources/files";
     private static final String VALID_FILE_DATA = "1gfdskjal\n2 3x 4.\n1 7 8 3\n5 6 7 2";
 
     private File directory;

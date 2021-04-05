@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="ServiceSuite" verbose="1" >
+    <test name="Service" >
+        <classes>
+            <class name="com.shichko.task.service.impl.CalculationServiceImplTest" />
+            <class name="com.shichko.task.service.impl.CalculationServiceStreamImplTest" />
+            <class name="com.shichko.task.service.impl.SearchServiceImplTest" />
+            <class name="com.shichko.task.service.impl.SearchServiceStreamImplTest" />
+            <class name="com.shichko.task.service.impl.SortServiceImplTest" />
+        </classes>
+    </test>
+</suite>

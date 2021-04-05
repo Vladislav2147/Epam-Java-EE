@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="ReadSuite" verbose="1" >
+    <test name="Reader" >
+        <classes>
+            <class name="com.shichko.task.reader.FileReaderTest" />
+        </classes>
+    </test>
+
+    <test name="Parser">
+        <classes>
+            <class name="com.shichko.task.parser.IntArrayParserTest"/>
+        </classes>
+    </test>
+</suite>
