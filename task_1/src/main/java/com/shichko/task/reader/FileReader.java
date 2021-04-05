@@ -18,7 +18,9 @@ public class FileReader {
     public List<String> readLines(File file) throws FileReadException {
         if (file.exists() && file.isFile()) {
             try {
-                return Files.lines(file.toPath()).collect(Collectors.toList());
+                List<String> lines = Files.lines(file.toPath()).collect(Collectors.toList());
+                logger.log(Level.INFO, "File " + file.getName() + " successfully read to lines " + lines.size());
+                return lines;
             } catch (IOException e) {
                 logger.log(Level.ERROR, "Error with file reading", e);
                 throw new FileReadException("Error with file reading", e);

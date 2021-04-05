@@ -15,20 +15,23 @@ public class IntArrayParser {
     private static final Logger logger = LogManager.getLogger();
 
     public Optional<IntArray> parse(List<String> lines) {
-        Optional<IntArray> result = Optional.empty();
+        Optional<IntArray> optionalIntArray = Optional.empty();
         if (lines != null) {
-            for (String line: lines) {
+            int i = 0;
+            while (i < lines.size()) {
+                String line = lines.get(i);
                 if (IntArrayValidator.isValid(line)) {
                     IntArray intArray = parseLine(line);
                     logger.log(Level.INFO, "Valid IntArray to return: " + intArray);
-                    result = Optional.of(intArray);
+                    optionalIntArray = Optional.of(intArray);
                     break;
                 } else {
                     logger.log(Level.WARN, "Invalid line: " + line);
                 }
+                i++;
             }
         }
-        return result;
+        return optionalIntArray;
     }
 
     public IntArray parseLine(String line) {

@@ -17,7 +17,7 @@ public class SearchServiceStreamImpl implements SearchService {
     @Override
     public OptionalInt findMin(IntArray array) {
         OptionalInt min = OptionalInt.empty();
-        if (!IntArrayValidator.isNullOrEmpty(array)) {
+        if (IntArrayValidator.isNotEmpty(array)) {
             min = Arrays.stream(array.getElements()).min();
         }
         logger.log(Level.INFO, "min value is: " + min);
@@ -27,7 +27,7 @@ public class SearchServiceStreamImpl implements SearchService {
     @Override
     public OptionalInt findMax(IntArray array) {
         OptionalInt max = OptionalInt.empty();
-        if (!IntArrayValidator.isNullOrEmpty(array)) {
+        if (IntArrayValidator.isNotEmpty(array)) {
             max = Arrays.stream(array.getElements()).max();
         }
         logger.log(Level.INFO, "max value is: " + max);

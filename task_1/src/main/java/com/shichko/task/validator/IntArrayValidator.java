@@ -6,8 +6,8 @@ public class IntArrayValidator {
 
     final static String REGEXP = "^(-?\\d+\\s?)+$";
 
-    public static boolean isNullOrEmpty(IntArray array) {
-        return array == null || array.length() == 0;
+    public static boolean isValid(String array) {
+        return array.matches(REGEXP);
     }
 
     public static boolean isNull(IntArray array) {
@@ -15,10 +15,11 @@ public class IntArrayValidator {
     }
 
     public static boolean isEmpty(IntArray array) {
-        return array.length() == 0;
+        return array != null && array.length() == 0;
     }
 
-    public static boolean isValid(String array) {
-        return array.matches(REGEXP);
+    public static boolean isNotEmpty(IntArray array) {
+        return array != null && array.length() != 0;
     }
+
 }

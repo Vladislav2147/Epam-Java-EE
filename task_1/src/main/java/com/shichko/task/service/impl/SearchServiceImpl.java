@@ -16,7 +16,7 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public OptionalInt findMin(IntArray array) {
         OptionalInt optionalMin = OptionalInt.empty();
-        if (!IntArrayValidator.isNullOrEmpty(array)) {
+        if (IntArrayValidator.isNotEmpty(array)) {
             int min = Integer.MAX_VALUE;
             for (int item: array) {
                 if (item < min) {
@@ -33,7 +33,7 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public OptionalInt findMax(IntArray array) {
         OptionalInt optionalMax = OptionalInt.empty();
-        if (!IntArrayValidator.isNullOrEmpty(array)) {
+        if (IntArrayValidator.isNotEmpty(array)) {
             int max = Integer.MIN_VALUE;
             for (int item: array) {
                 if (item > max) {
