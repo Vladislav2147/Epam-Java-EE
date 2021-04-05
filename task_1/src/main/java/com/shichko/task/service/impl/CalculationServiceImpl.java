@@ -19,6 +19,9 @@ public class CalculationServiceImpl implements CalculationService {
         if (IntArrayValidator.isNull(array)) {
             throw new ArrayException("IntArray is null");
         }
+        if (condition == null) {
+            throw new ArrayException("condition is null");
+        }
 
         for (int i = 0; i < array.length(); i++) {
             if (condition.test(array.get(i))) {

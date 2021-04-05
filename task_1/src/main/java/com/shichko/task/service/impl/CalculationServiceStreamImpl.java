@@ -20,6 +20,9 @@ public class CalculationServiceStreamImpl implements CalculationService {
         if (IntArrayValidator.isNull(array)) {
             throw new ArrayException("IntArray is null");
         }
+        if (condition == null) {
+            throw new ArrayException("condition is null");
+        }
 
         int[] elements = Arrays
                 .stream(array.getElements())
