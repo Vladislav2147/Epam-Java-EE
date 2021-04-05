@@ -1,7 +1,9 @@
 package com.shichko.task.service.impl;
 
 import com.shichko.task.entity.IntArray;
+import com.shichko.task.exception.ArrayException;
 import com.shichko.task.service.SortService;
+import com.shichko.task.validator.IntArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +15,11 @@ public class SortServiceImpl implements SortService {
     private static Logger logger = LogManager.getLogger();
 
     @Override
-    public void bubbleSort(IntArray array) {
+    public void bubbleSort(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         for (int i = 0; i < array.length(); i++) {
             for (int j = 0; j < array.length() - 1 - i; j++) {
                 if (array.get(j) > array.get(j + 1)) {
@@ -27,7 +33,11 @@ public class SortServiceImpl implements SortService {
     }
 
     @Override
-    public void insertionSort(IntArray array) {
+    public void insertionSort(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         for (int i = 1; i < array.length(); i++)
         {
             int valueToSort = array.get(i);
@@ -41,7 +51,11 @@ public class SortServiceImpl implements SortService {
     }
 
     @Override
-    public void selectionSort(IntArray array) {
+    public void selectionSort(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         for (int i = 0; i < array.length() - 1; i++)
         {
             int index = i;
@@ -57,7 +71,11 @@ public class SortServiceImpl implements SortService {
     }
 
     @Override
-    public void streamSort(IntArray array) {
+    public void streamSort(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         int[] sortedElements = Arrays
                 .stream(array.getElements())
                 .sorted()

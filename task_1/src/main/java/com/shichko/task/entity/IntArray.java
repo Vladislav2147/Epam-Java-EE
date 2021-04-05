@@ -35,7 +35,6 @@ public class IntArray implements Iterable<Integer> {
         return new IntArrayIterator();
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -10,6 +10,14 @@ public class IntArrayValidator {
         return array == null || array.length() == 0;
     }
 
+    public static boolean isNull(IntArray array) {
+        return array == null;
+    }
+
+    public static boolean isEmpty(IntArray array) {
+        return array.length() == 0;
+    }
+
     public static boolean isValid(String array) {
         return array.matches(REGEXP);
     }

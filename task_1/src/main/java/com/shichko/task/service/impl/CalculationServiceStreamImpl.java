@@ -3,6 +3,7 @@ package com.shichko.task.service.impl;
 import com.shichko.task.entity.IntArray;
 import com.shichko.task.exception.ArrayException;
 import com.shichko.task.service.CalculationService;
+import com.shichko.task.validator.IntArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +16,11 @@ public class CalculationServiceStreamImpl implements CalculationService {
     private static Logger logger = LogManager.getLogger();
 
     @Override
-    public void replaceByCondition(IntArray array, int replaced, Predicate<Integer> condition) {
+    public void replaceByCondition(IntArray array, int replaced, Predicate<Integer> condition) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         int[] elements = Arrays
                 .stream(array.getElements())
                 .map(operand -> {
@@ -31,7 +36,11 @@ public class CalculationServiceStreamImpl implements CalculationService {
     }
 
     @Override
-    public int sum(IntArray array) {
+    public int sum(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         int sum = Arrays.stream(array.getElements()).sum();
         logger.log(Level.INFO, "sum = " + sum);
         return sum;
@@ -39,6 +48,13 @@ public class CalculationServiceStreamImpl implements CalculationService {
 
     @Override
     public double getAverage(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+        if (IntArrayValidator.isEmpty(array)) {
+            throw new ArrayException("IntArray is empty");
+        }
+
         double average = Arrays
                 .stream(array.getElements())
                 .average()
@@ -51,7 +67,11 @@ public class CalculationServiceStreamImpl implements CalculationService {
     }
 
     @Override
-    public long countPositive(IntArray array) {
+    public long countPositive(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         long positives = Arrays.stream(array.getElements())
                 .filter(value -> value > 0)
                 .count();
@@ -60,7 +80,11 @@ public class CalculationServiceStreamImpl implements CalculationService {
     }
 
     @Override
-    public long countNegative(IntArray array) {
+    public long countNegative(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         long negatives = Arrays.stream(array.getElements())
                 .filter(value -> value < 0)
                 .count();

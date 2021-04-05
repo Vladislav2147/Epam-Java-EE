@@ -16,6 +16,10 @@ public class CalculationServiceImpl implements CalculationService {
 
     @Override
     public void replaceByCondition(IntArray array, int replaced, Predicate<Integer> condition) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         for (int i = 0; i < array.length(); i++) {
             if (condition.test(array.get(i))) {
                 array.set(i, replaced);
@@ -25,7 +29,11 @@ public class CalculationServiceImpl implements CalculationService {
     }
 
     @Override
-    public int sum(IntArray array) {
+    public int sum(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         int sum = 0;
         for (int item: array) {
             sum += item;
@@ -36,17 +44,24 @@ public class CalculationServiceImpl implements CalculationService {
 
     @Override
     public double getAverage(IntArray array) throws ArrayException {
-        if (IntArrayValidator.isNullOrEmpty(array)) {
-            logger.log(Level.ERROR, "Array is empty");
-            throw new ArrayException("Array has no elements");
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
         }
+        if (IntArrayValidator.isEmpty(array)) {
+            throw new ArrayException("IntArray is empty");
+        }
+
         double average = (double) sum(array) / array.length();
         logger.log(Level.INFO, "average = " + average);
         return average;
     }
 
     @Override
-    public long countPositive(IntArray array) {
+    public long countPositive(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         long amount = 0;
         for (int item: array) {
             if (item > 0) {
@@ -58,7 +73,11 @@ public class CalculationServiceImpl implements CalculationService {
     }
 
     @Override
-    public long countNegative(IntArray array) {
+    public long countNegative(IntArray array) throws ArrayException {
+        if (IntArrayValidator.isNull(array)) {
+            throw new ArrayException("IntArray is null");
+        }
+
         long amount = 0;
         for (int item: array) {
             if (item < 0) {

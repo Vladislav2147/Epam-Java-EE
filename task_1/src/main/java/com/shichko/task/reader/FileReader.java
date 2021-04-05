@@ -24,7 +24,7 @@ public class FileReader {
                 throw new FileReadException("Error with file reading", e);
             }
         } else {
-            throw new FileReadException("Invalid file: " + file.getAbsolutePath());
+            throw new FileReadException("Invalid file name: " + file.getAbsolutePath());
         }
     }
 }
