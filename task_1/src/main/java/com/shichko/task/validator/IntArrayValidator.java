@@ -4,10 +4,10 @@ import com.shichko.task.entity.IntArray;
 
 public class IntArrayValidator {
 
-    final static String REGEXP = "^(-?\\d+\\s?)+$";
+    private final static String REGEXP = "^(-?\\d+\\s?)+$";
 
-    public static boolean isValid(String array) {
-        return array.matches(REGEXP);
+    public static boolean isValid(String stringArray) {
+        return stringArray.matches(REGEXP);
     }
 
     public static boolean isNull(IntArray array) {

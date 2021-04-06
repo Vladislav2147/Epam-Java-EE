@@ -14,8 +14,8 @@ import static org.testng.Assert.assertTrue;
 
 public class CalculationServiceImplTest {
 
-    CalculationService calculationService = new CalculationServiceImpl();
-    IntArray intArray;
+    private CalculationService calculationService = new CalculationServiceImpl();
+    private IntArray intArray;
 
     @BeforeMethod
     public void init() {
@@ -32,7 +32,7 @@ public class CalculationServiceImplTest {
     }
 
     @Test
-    public void testSum() {
+    public void testSum() throws ArrayException {
 
         int actual = calculationService.sum(intArray);
         int expected = Arrays.stream(intArray.getElements()).sum();
@@ -57,7 +57,7 @@ public class CalculationServiceImplTest {
     }
 
     @Test
-    public void testCountPositive() {
+    public void testCountPositive() throws ArrayException {
 
         long actual = calculationService.countPositive(intArray);
         long expected = Arrays.stream(intArray.getElements()).filter(num -> num > 0).count();
@@ -66,7 +66,7 @@ public class CalculationServiceImplTest {
     }
 
     @Test
-    public void testCountNegative() {
+    public void testCountNegative() throws ArrayException {
 
         long actual = calculationService.countNegative(intArray);
         long expected = Arrays.stream(intArray.getElements()).filter(num -> num < 0).count();

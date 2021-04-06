@@ -12,7 +12,7 @@ import java.util.function.Predicate;
 
 public class CalculationServiceImpl implements CalculationService {
 
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     @Override
     public void replaceByCondition(IntArray array, int replaced, Predicate<Integer> condition) throws ArrayException {

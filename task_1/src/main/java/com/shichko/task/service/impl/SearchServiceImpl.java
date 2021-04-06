@@ -11,7 +11,7 @@ import java.util.OptionalInt;
 
 public class SearchServiceImpl implements SearchService {
 
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     @Override
     public OptionalInt findMin(IntArray array) {

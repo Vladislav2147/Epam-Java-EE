@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class FileReader {
 
-    static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     public List<String> readLines(File file) throws FileReadException {
         if (file.exists() && file.isFile()) {
