@@ -2,12 +2,11 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
         xmlns:tns="https://github.com/Vladislav2147/Epam-Java-EE"
-        targetNamespace="https://github.com/Vladislav2147/Epam-Java-EE"
->
+        targetNamespace="https://github.com/Vladislav2147/Epam-Java-EE" >
     <element name="tariffs">
         <complexType>
             <sequence>
-                <element name="tariff" type="tns:tariff" maxOccurs="unbounded"/>
+                <element ref="tns:tariff" maxOccurs="unbounded"/>
             </sequence>
         </complexType>
     </element>
@@ -15,17 +14,27 @@
     <complexType name="tariff">
         <sequence>
             <element name="name" type="string" />
-            <element name="operator-name" type="tns:operator-name" />
+            <element name="operatorName" type="tns:operatorName" />
             <element name="payroll" type="tns:nonNegativeDecimal" />
-            <element name="sms-price" type="tns:nonNegativeDecimal" />
-            <element name="launch-date" type="date" />
-            <element name="call-prices" type="tns:call-prices" />
+            <element name="smsPrice" type="tns:nonNegativeDecimal" />
+            <element name="launchDate" type="date" />
+            <element name="callPrices" type="tns:callPrices" />
             <element name="params" type="tns:parameters" />
         </sequence>
         <attribute name="id" type="tns:tariffID" use="required" />
     </complexType>
 
-    <simpleType name="operator-name">
+    <complexType name="roamingTariff">
+        <complexContent>
+            <extension base="tns:tariff">
+                <sequence>
+                    <element name="roamingPrice" type="tns:nonNegativeDecimal" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="operatorName">
         <restriction base="string">
             <enumeration value="A1" />
             <enumeration value="MTS" />
@@ -35,7 +44,7 @@
 
     <simpleType name="tariffID">
         <restriction base="ID">
-            <pattern value="\w{1,20}" />
+            <pattern value="\w{1,5}" />
         </restriction>
     </simpleType>
 
@@ -45,20 +54,25 @@
         </restriction>
     </simpleType>
 
-    <complexType name="call-prices">
+    <complexType name="callPrices">
         <sequence>
-            <element name="call-price-inside-network" type="tns:nonNegativeDecimal" />
-            <element name="call-price" type="tns:nonNegativeDecimal" />
-            <element name="call-price-to-landline" type="tns:nonNegativeDecimal" />
+            <element name="networkCallPrice" type="tns:price" />
+            <element name="callPrice" type="tns:price" />
+            <element name="landlineCallPrice" type="tns:price" />
         </sequence>
     </complexType>
 
     <complexType name="parameters">
         <sequence>
-            <element name="favorite-numbers" type="nonNegativeInteger" />
+            <element name="favoriteNumbers" type="nonNegativeInteger" />
             <element name="tariffication" type="tns:tariffication" />
-            <element name="subscribe-price" type="tns:nonNegativeDecimal" />
+            <element name="subscribePrice" type="tns:nonNegativeDecimal" />
         </sequence>
+    </complexType>
+
+    <complexType name="price">
+        <attribute name="price" type="tns:nonNegativeDecimal" default="0.0" />
+        <attribute name="firstMonthPrice" type="tns:nonNegativeDecimal" use="optional" />
     </complexType>
 
     <simpleType name="tariffication">
@@ -68,4 +82,7 @@
             <enumeration value="1 hour" />
         </restriction>
     </simpleType>
+
+    <element name="tariff" type="tns:tariff" />
+    <element name="roamingTariff" type="tns:roamingTariff" substitutionGroup="tns:tariff"/>
 </schema>
