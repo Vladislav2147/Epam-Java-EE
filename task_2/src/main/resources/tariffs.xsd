@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"
+        xmlns:tns="https://github.com/Vladislav2147/Epam-Java-EE"
+        targetNamespace="https://github.com/Vladislav2147/Epam-Java-EE"
+>
+    <element name="tariffs">
+        <complexType>
+            <sequence>
+                <element name="tariff" type="tns:tariff" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="tariff">
+        <sequence>
+            <element name="name" type="string" />
+            <element name="operator-name" type="tns:operator-name" />
+            <element name="payroll" type="tns:nonNegativeDecimal" />
+            <element name="sms-price" type="tns:nonNegativeDecimal" />
+            <element name="launch-date" type="date" />
+            <element name="call-prices" type="tns:call-prices" />
+            <element name="params" type="tns:parameters" />
+        </sequence>
+        <attribute name="id" type="tns:tariffID" use="required" />
+    </complexType>
+
+    <simpleType name="operator-name">
+        <restriction base="string">
+            <enumeration value="A1" />
+            <enumeration value="MTS" />
+            <enumeration value="LIFE" />
+        </restriction>
+    </simpleType>
+
+    <simpleType name="tariffID">
+        <restriction base="ID">
+            <pattern value="\w{1,20}" />
+        </restriction>
+    </simpleType>
+
+    <simpleType name="nonNegativeDecimal">
+        <restriction base="decimal">
+            <minInclusive value="0" />
+        </restriction>
+    </simpleType>
+
+    <complexType name="call-prices">
+        <sequence>
+            <element name="call-price-inside-network" type="tns:nonNegativeDecimal" />
+            <element name="call-price" type="tns:nonNegativeDecimal" />
+            <element name="call-price-to-landline" type="tns:nonNegativeDecimal" />
+        </sequence>
+    </complexType>
+
+    <complexType name="parameters">
+        <sequence>
+            <element name="favorite-numbers" type="nonNegativeInteger" />
+            <element name="tariffication" type="tns:tariffication" />
+            <element name="subscribe-price" type="tns:nonNegativeDecimal" />
+        </sequence>
+    </complexType>
+
+    <simpleType name="tariffication">
+        <restriction base="string">
+            <enumeration value="12 seconds" />
+            <enumeration value="1 minute" />
+            <enumeration value="1 hour" />
+        </restriction>
+    </simpleType>
+</schema>
