@@ -99,8 +99,8 @@ public class Tariff {
 
         Tariff tariff = (Tariff) o;
 
-        if (Double.compare(tariff.payroll, payroll) != 0) return false;
-        if (Double.compare(tariff.smsPrice, smsPrice) != 0) return false;
+        if (tariff.payroll != payroll) return false;
+        if (tariff.smsPrice != smsPrice) return false;
         if (!id.equals(tariff.id)) return false;
         if (!name.equals(tariff.name)) return false;
         if (operator != tariff.operator) return false;

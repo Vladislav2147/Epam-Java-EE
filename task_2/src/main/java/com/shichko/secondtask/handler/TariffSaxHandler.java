@@ -23,10 +23,10 @@ public class TariffSaxHandler extends DefaultHandler {
 
     private final static Logger logger = LogManager.getLogger();
 
-    private Set<Tariff> tariffs;
+    private final Set<Tariff> tariffs;
     private Tariff currentTariff;
     private TariffXmlTag currentTag;
-    private EnumSet<TariffXmlTag> withText;
+    private final EnumSet<TariffXmlTag> withText;
 
     public TariffSaxHandler() {
         tariffs = new HashSet<>();

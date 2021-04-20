@@ -1,6 +1,5 @@
 package com.shichko.secondtask.builder;
 
-import com.shichko.secondtask.entity.CallPrice;
 import com.shichko.secondtask.entity.CallPrices;
 import com.shichko.secondtask.exception.TariffXmlException;
 import org.testng.annotations.Test;

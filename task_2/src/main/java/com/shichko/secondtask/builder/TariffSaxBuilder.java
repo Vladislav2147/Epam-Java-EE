@@ -19,7 +19,7 @@ public class TariffSaxBuilder extends AbstractTariffBuilder {
 
     private static final Logger logger = LogManager.getLogger();
 
-    private TariffSaxHandler handler;
+    private final TariffSaxHandler handler;
     private XMLReader reader;
 
     public TariffSaxBuilder() {

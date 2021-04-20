@@ -25,7 +25,7 @@ public enum TariffXmlTag {
     PRICE("price"),
     FIRST_MONTH_PRICE("firstMonthPrice");
 
-    private String value;
+    private final String value;
 
     TariffXmlTag(String value) {
         this.value = value;

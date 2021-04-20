@@ -7,7 +7,7 @@ public enum Tariffication {
     MINUTE("1 minute"),
     HOUR("1 hour");
 
-    private String value;
+    private final String value;
 
     Tariffication(String value) {
         this.value = value;

@@ -24,7 +24,7 @@ public class TariffStaxBuilder extends AbstractTariffBuilder {
 
     private static final Logger logger = LogManager.getLogger();
 
-    private XMLInputFactory inputFactory;
+    private final XMLInputFactory inputFactory;
 
     public TariffStaxBuilder() {
         inputFactory = XMLInputFactory.newInstance();
