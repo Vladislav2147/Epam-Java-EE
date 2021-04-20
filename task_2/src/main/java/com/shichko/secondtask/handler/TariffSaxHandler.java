@@ -7,6 +7,9 @@ import com.shichko.secondtask.entity.Tariff;
 import com.shichko.secondtask.entity.enums.Operator;
 import com.shichko.secondtask.entity.enums.TariffXmlTag;
 import com.shichko.secondtask.entity.enums.Tariffication;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -17,6 +20,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class TariffSaxHandler extends DefaultHandler {
+
+    private final static Logger logger = LogManager.getLogger();
 
     private Set<Tariff> tariffs;
     private Tariff currentTariff;
@@ -62,6 +67,7 @@ public class TariffSaxHandler extends DefaultHandler {
         if (qName.equals(TariffXmlTag.ROAMING_TARIFF.getValue())
                 || qName.equals(TariffXmlTag.TARIFF.getValue())) {
             tariffs.add(currentTariff);
+            logger.log(Level.INFO, "tariff " + currentTariff.getId() + " was added to result set");
         }
     }
 
@@ -101,6 +107,7 @@ public class TariffSaxHandler extends DefaultHandler {
                     throw new EnumConstantNotPresentException(
                             currentTag.getDeclaringClass(), currentTag.name());
             }
+            logger.log(Level.INFO, "parces data: \"" + data + "\" from tag: " + currentTag.getValue());
         }
         currentTag = null;
     }

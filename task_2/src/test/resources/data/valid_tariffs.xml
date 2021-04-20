@@ -24,7 +24,7 @@
         <smsPrice>0.40</smsPrice>
         <launchDate>2021-02-01</launchDate>
         <callPrices>
-            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <networkCallPrice firstMonthPrice="0" price="0.3" />
             <callPrice price="0.50" />
             <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
         </callPrices>

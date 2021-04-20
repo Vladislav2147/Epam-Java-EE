@@ -1,6 +1,7 @@
 package com.shichko.secondtask.builder;
 
 import com.shichko.secondtask.entity.Tariff;
+import com.shichko.secondtask.exception.TariffXmlException;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,5 +17,5 @@ public abstract class AbstractTariffBuilder {
         return tariffs;
     }
 
-    public abstract void buildSetTariffs(String filename);
+    public abstract void buildSetTariffs(String filename) throws TariffXmlException;
 }

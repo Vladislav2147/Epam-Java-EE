@@ -6,6 +6,11 @@ import com.shichko.secondtask.entity.Tariff;
 import com.shichko.secondtask.entity.enums.Operator;
 import com.shichko.secondtask.entity.enums.TariffXmlTag;
 import com.shichko.secondtask.entity.enums.Tariffication;
+import com.shichko.secondtask.exception.TariffXmlException;
+import com.shichko.secondtask.validator.XmlTariffValidator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -19,6 +24,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class TariffDomBuilder extends AbstractTariffBuilder {
+
+    private static final Logger logger = LogManager.getLogger();
+
     private DocumentBuilder docBuilder;
 
     public TariffDomBuilder() {
@@ -28,12 +36,15 @@ public class TariffDomBuilder extends AbstractTariffBuilder {
         try {
             docBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            //TODO
+            logger.log(Level.ERROR, e);
         }
     }
 
     @Override
-    public void buildSetTariffs(String filename) {
+    public void buildSetTariffs(String filename) throws TariffXmlException {
+        if (!XmlTariffValidator.validateXml(filename)) {
+            throw new TariffXmlException("Document not valid");
+        }
         Document document = null;
         try {
             document = docBuilder.parse(filename);
@@ -43,6 +54,7 @@ public class TariffDomBuilder extends AbstractTariffBuilder {
                 Element tariffElement = (Element) tariffsList.item(i);
                 Tariff tariff = buildTariff(tariffElement);
                 tariffs.add(tariff);
+                logger.log(Level.INFO, "tariff " + tariff.getId() + " was added to result set");
             }
 
             NodeList roamingTariffsList = root.getElementsByTagName(TariffXmlTag.ROAMING_TARIFF.getValue());
@@ -50,22 +62,28 @@ public class TariffDomBuilder extends AbstractTariffBuilder {
                 Element roamingTariffElement = (Element) roamingTariffsList.item(i);
                 Tariff tariff = buildTariff(roamingTariffElement);
                 tariffs.add(tariff);
+                logger.log(Level.INFO, "roamingTariff " + tariff.getId() + " was added to result set");
             }
 
-        } catch (IOException | SAXException e) {
-            //TODO
+        } catch (SAXException e) {
+            throw new TariffXmlException("Error with SAX parsing.", e);
+        } catch (IOException e) {
+            throw new TariffXmlException("Error with opening file " + filename, e);
         }
+        logger.log(Level.INFO, "tariffs was set from handler. Current size: " + tariffs.size());
     }
 
-    private Tariff buildTariff(Element tariffElement) {
+    private Tariff buildTariff(Element tariffElement) throws TariffXmlException {
         Tariff tariff;
         if (tariffElement.getTagName().equals(TariffXmlTag.TARIFF.getValue())) {
             tariff = new Tariff();
-        } else {
+        } else if (tariffElement.getTagName().equals(TariffXmlTag.ROAMING_TARIFF.getValue())) {
             tariff = new RoamingTariff();
 
             double roamingPrice = Double.parseDouble(getElementTextContent(tariffElement, TariffXmlTag.ROAMING_PRICE.getValue()));
             ((RoamingTariff) tariff).setRoamingPrice(roamingPrice);
+        } else {
+            throw new TariffXmlException("Invalid child of <tariffs>: " + tariffElement.getTagName());
         }
 
         tariff.setId(tariffElement.getAttribute(TariffXmlTag.ID.getValue()));

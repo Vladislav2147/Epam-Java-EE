@@ -5,6 +5,11 @@ import com.shichko.secondtask.entity.*;
 import com.shichko.secondtask.entity.enums.Operator;
 import com.shichko.secondtask.entity.enums.TariffXmlTag;
 import com.shichko.secondtask.entity.enums.Tariffication;
+import com.shichko.secondtask.exception.TariffXmlException;
+import com.shichko.secondtask.validator.XmlTariffValidator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -16,6 +21,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class TariffStaxBuilder extends AbstractTariffBuilder {
+
+    private static final Logger logger = LogManager.getLogger();
+
     private XMLInputFactory inputFactory;
 
     public TariffStaxBuilder() {
@@ -23,7 +31,10 @@ public class TariffStaxBuilder extends AbstractTariffBuilder {
     }
 
     @Override
-    public void buildSetTariffs(String filename) {
+    public void buildSetTariffs(String filename) throws TariffXmlException {
+        if (!XmlTariffValidator.validateXml(filename)) {
+            throw new TariffXmlException("Document not valid");
+        }
         try (FileInputStream fileInputStream = new FileInputStream(new File(filename))) {
             XMLStreamReader reader = inputFactory.createXMLStreamReader(fileInputStream);
             String name;
@@ -35,14 +46,16 @@ public class TariffStaxBuilder extends AbstractTariffBuilder {
                     if (name.equals(TariffXmlTag.TARIFF.getValue()) || name.equals(TariffXmlTag.ROAMING_TARIFF.getValue())) {
                         Tariff tariff = buildTariff(reader);
                         tariffs.add(tariff);
+                        logger.log(Level.INFO, "tariff " + tariff.getId() + " was added to result set");
                     }
                 }
             }
-
-        } catch (XMLStreamException | IOException e) {
-            //TODO
+        } catch (XMLStreamException e) {
+            throw new TariffXmlException("Error with stream parsing.", e);
+        } catch (IOException e) {
+            throw new TariffXmlException("Error with opening file " + filename, e);
         }
-
+        logger.log(Level.INFO, "tariffs was set from handler. Current size: " + tariffs.size());
     }
 
     private Tariff buildTariff(XMLStreamReader reader) throws XMLStreamException {
@@ -93,10 +106,9 @@ public class TariffStaxBuilder extends AbstractTariffBuilder {
                     if (endTag == TariffXmlTag.TARIFF || endTag == TariffXmlTag.ROAMING_TARIFF) {
                         return tariff;
                     }
-
             }
         }
-        throw new XMLStreamException("Unknown element in tag <student>");
+        throw new XMLStreamException("Unknown element in tag <tariff>");
     }
 
     private CallPrices getXMLCallPrices(XMLStreamReader reader)
