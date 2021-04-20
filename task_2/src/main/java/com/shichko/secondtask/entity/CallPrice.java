@@ -4,6 +4,9 @@ public class CallPrice {
     private double price = 0;
     private Double firstMonthPrice;
 
+    public CallPrice() {
+    }
+
     public CallPrice(Double firstMonthPrice) {
         this.firstMonthPrice = firstMonthPrice;
     }
@@ -33,8 +36,11 @@ public class CallPrice {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         CallPrice callPrice = (CallPrice) o;
-        return callPrice.price == price && firstMonthPrice.equals(callPrice.firstMonthPrice);
+
+        if (Double.compare(callPrice.price, price) != 0) return false;
+        return firstMonthPrice != null ? firstMonthPrice.equals(callPrice.firstMonthPrice) : callPrice.firstMonthPrice == null;
     }
 
     @Override

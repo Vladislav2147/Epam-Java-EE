@@ -11,8 +11,8 @@ public class Tariff {
     private double payroll;
     private double smsPrice;
     private LocalDate launchDate;
-    private CallPrices callPrices;
-    private Params params;
+    private CallPrices callPrices = new CallPrices();
+    private Params params = new Params();
 
     public Tariff() {
     }

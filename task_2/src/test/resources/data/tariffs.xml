@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tariffs xmlns="https://github.com/Vladislav2147/Epam-Java-EE">
+    <tariff id="t0001">
+        <name>Tariff1</name>
+        <operatorName>MTS</operatorName>
+        <payroll>20.4</payroll>
+        <smsPrice>0.50</smsPrice>
+        <launchDate>2020-01-01</launchDate>
+        <callPrices>
+            <networkCallPrice />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>0</subscribePrice>
+        </params>
+    </tariff>
+    <tariff id="t0002">
+        <name>Tariff2</name>
+        <operatorName>A1</operatorName>
+        <payroll>15</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+    </tariff>
+    <roamingTariff id="t0003">
+        <name>RoamingTariff</name>
+        <operatorName>LIFE</operatorName>
+        <payroll>15</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>10</favoriteNumbers>
+            <tariffication>12 seconds</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+        <roamingPrice>10</roamingPrice>
+    </roamingTariff>
+    <tariff id="t0004">
+        <name>Tariff4</name>
+        <operatorName>MTS</operatorName>
+        <payroll>20.4</payroll>
+        <smsPrice>0.50</smsPrice>
+        <launchDate>2020-01-01</launchDate>
+        <callPrices>
+            <networkCallPrice />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>0</subscribePrice>
+        </params>
+    </tariff>
+    <tariff id="t0005">
+        <name>Tariff5</name>
+        <operatorName>MTS</operatorName>
+        <payroll>15</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+    </tariff>
+    <roamingTariff id="t0006">
+        <name>RoamingTariff</name>
+        <operatorName>MTS</operatorName>
+        <payroll>15</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>10</favoriteNumbers>
+            <tariffication>12 seconds</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+        <roamingPrice>10</roamingPrice>
+    </roamingTariff>
+    <tariff id="t0007">
+        <name>Tariff7</name>
+        <operatorName>LIFE</operatorName>
+        <payroll>13.4</payroll>
+        <smsPrice>1.50</smsPrice>
+        <launchDate>2019-01-01</launchDate>
+        <callPrices>
+            <networkCallPrice />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>0</subscribePrice>
+        </params>
+    </tariff>
+    <tariff id="t0008">
+        <name>Tariff8</name>
+        <operatorName>LIFE</operatorName>
+        <payroll>10</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+    </tariff>
+    <roamingTariff id="t0009">
+        <name>RoamingTariff9</name>
+        <operatorName>A1</operatorName>
+        <payroll>25</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>10</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+        <roamingPrice>10</roamingPrice>
+    </roamingTariff>
+    <tariff id="t0010">
+        <name>Tariff10</name>
+        <operatorName>MTS</operatorName>
+        <payroll>20.4</payroll>
+        <smsPrice>0.50</smsPrice>
+        <launchDate>2020-01-01</launchDate>
+        <callPrices>
+            <networkCallPrice />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>0</subscribePrice>
+        </params>
+    </tariff>
+    <tariff id="t0011">
+        <name>Tariff11</name>
+        <operatorName>MTS</operatorName>
+        <payroll>15</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+    </tariff>
+    <roamingTariff id="t0012">
+        <name>RoamingTariff</name>
+        <operatorName>A1</operatorName>
+        <payroll>15</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>10</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+        <roamingPrice>10</roamingPrice>
+    </roamingTariff>
+    <roamingTariff id="t0013">
+        <name>RoamingTariff13</name>
+        <operatorName>MTS</operatorName>
+        <payroll>19</payroll>
+        <smsPrice>0.45</smsPrice>
+        <launchDate>2018-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>5</favoriteNumbers>
+            <tariffication>1 hour</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+        <roamingPrice>10</roamingPrice>
+    </roamingTariff>
+    <tariff id="t0014">
+        <name>Tariff14</name>
+        <operatorName>MTS</operatorName>
+        <payroll>20.4</payroll>
+        <smsPrice>0.50</smsPrice>
+        <launchDate>2020-01-01</launchDate>
+        <callPrices>
+            <networkCallPrice />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>0</subscribePrice>
+        </params>
+    </tariff>
+    <tariff id="t0015">
+        <name>Tariff15</name>
+        <operatorName>MTS</operatorName>
+        <payroll>15</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>2</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+    </tariff>
+    <roamingTariff id="t0016">
+        <name>RoamingTariff16</name>
+        <operatorName>LIFE</operatorName>
+        <payroll>15</payroll>
+        <smsPrice>0.40</smsPrice>
+        <launchDate>2021-02-01</launchDate>
+        <callPrices>
+            <networkCallPrice price="0.3" firstMonthPrice="0" />
+            <callPrice price="0.50" />
+            <landlineCallPrice price="0.70" firstMonthPrice="0.50" />
+        </callPrices>
+        <params>
+            <favoriteNumbers>10</favoriteNumbers>
+            <tariffication>1 minute</tariffication>
+            <subscribePrice>5</subscribePrice>
+        </params>
+        <roamingPrice>10</roamingPrice>
+    </roamingTariff>
+</tariffs>

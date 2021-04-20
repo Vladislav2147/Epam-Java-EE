@@ -1,13 +1,16 @@
 package com.shichko.secondtask.entity;
 
-import com.shichko.secondtask.entity.enums.Tarification;
+import com.shichko.secondtask.entity.enums.Tariffication;
 
 public class Params {
     private int favoriteNumbers;
-    private Tarification tariffication;
+    private Tariffication tariffication;
     private double subscribePrice;
 
-    public Params(int favoriteNumbers, Tarification tariffication, double subscribePrice) {
+    public Params() {
+    }
+
+    public Params(int favoriteNumbers, Tariffication tariffication, double subscribePrice) {
         this.favoriteNumbers = favoriteNumbers;
         this.tariffication = tariffication;
         this.subscribePrice = subscribePrice;
@@ -21,11 +24,11 @@ public class Params {
         this.favoriteNumbers = favoriteNumbers;
     }
 
-    public Tarification getTariffication() {
+    public Tariffication getTariffication() {
         return tariffication;
     }
 
-    public void setTariffication(Tarification tariffication) {
+    public void setTariffication(Tariffication tariffication) {
         this.tariffication = tariffication;
     }
 

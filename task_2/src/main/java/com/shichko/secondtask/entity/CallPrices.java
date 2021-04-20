@@ -1,9 +1,12 @@
 package com.shichko.secondtask.entity;
 
 public class CallPrices {
-    private CallPrice networkCallPrice;
-    private CallPrice callPrice;
-    private CallPrice landlineCallPrice;
+    private CallPrice networkCallPrice = new CallPrice();
+    private CallPrice callPrice = new CallPrice();
+    private CallPrice landlineCallPrice = new CallPrice();
+
+    public CallPrices() {
+    }
 
     public CallPrices(CallPrice networkCallPrice, CallPrice callPrice, CallPrice landlineCallPrice) {
         this.networkCallPrice = networkCallPrice;
