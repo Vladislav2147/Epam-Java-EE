@@ -2,13 +2,11 @@ package com.shichko.shape.entity;
 
 public class Ellipse {
     private int ellipseId;
-    private String name;
     private Point firstPoint;
     private Point secondPoint;
 
-    public Ellipse(int ellipseId, String name, Point firstPoint, Point secondPoint) {
+    public Ellipse(int ellipseId, Point firstPoint, Point secondPoint) {
         this.ellipseId = ellipseId;
-        this.name = name;
         this.firstPoint = firstPoint;
         this.secondPoint = secondPoint;
     }
@@ -19,14 +17,6 @@ public class Ellipse {
 
     public void setEllipseId(int ellipseId) {
         this.ellipseId = ellipseId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Point getFirstPoint() {
@@ -53,7 +43,6 @@ public class Ellipse {
         Ellipse ellipse = (Ellipse) o;
 
         if (ellipseId != ellipse.ellipseId) return false;
-        if (!name.equals(ellipse.name)) return false;
         if (!firstPoint.equals(ellipse.firstPoint)) return false;
         return secondPoint.equals(ellipse.secondPoint);
     }
@@ -61,7 +50,6 @@ public class Ellipse {
     @Override
     public int hashCode() {
         int result = ellipseId;
-        result = 31 * result + name.hashCode();
         result = 31 * result + firstPoint.hashCode();
         result = 31 * result + secondPoint.hashCode();
         return result;
@@ -71,7 +59,6 @@ public class Ellipse {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Ellipse{");
         sb.append("ellipseId=").append(ellipseId);
-        sb.append(", name='").append(name).append('\'');
         sb.append(", p1=").append(firstPoint);
         sb.append(", p2=").append(secondPoint);
         sb.append('}');
