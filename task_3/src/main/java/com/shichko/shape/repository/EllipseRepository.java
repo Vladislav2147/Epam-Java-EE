@@ -5,44 +5,29 @@ import com.shichko.shape.entity.Ellipse;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 
-public class EllipseRepository {
-    private List<Ellipse> ellipses;
+public interface EllipseRepository {
 
-    public boolean remove(Object o) {
-        return ellipses.remove(o);
-    }
+    List<Ellipse> getAll();
 
-    public boolean addAll(Collection<? extends Ellipse> c) {
-        return ellipses.addAll(c);
-    }
+    void forEach(Consumer<Ellipse> action);
 
-    public boolean removeAll(Collection<?> c) {
-        return ellipses.removeAll(c);
-    }
+    boolean remove(Ellipse ellipse);
 
-    public Ellipse get(int index) {
-        return ellipses.get(index);
-    }
+    boolean addAll(Collection<Ellipse> ellipses);
 
-    public Ellipse set(int index, Ellipse element) {
-        return ellipses.set(index, element);
-    }
+    boolean add(Ellipse ellipse);
 
-    public int indexOf(Object o) {
-        return ellipses.indexOf(o);
-    }
+    boolean removeAll(Collection<Ellipse> ellipses);
 
-    public void sort(Comparator<? super Ellipse> c) {
-        ellipses.sort(c);
-    }
+    Ellipse get(int index);
 
-    public List<Ellipse> query(Specification specification) {
-        List<Ellipse> list = ellipses
-                .stream()
-                .filter(specification::specify)
-                .collect(Collectors.toList());;
-        return list;
-    }
+    Ellipse set(int index, Ellipse element);
+
+    int indexOf(Ellipse ellipse);
+
+    void sort(Comparator<Ellipse> comparator);
+
+    List<Ellipse> query(Specification specification);
 }

@@ -13,6 +13,15 @@ public class Warehouse {
     private static Warehouse instance;
     private Map<Long, EllipseParameters> ellipseMap = new HashMap<>();
 
+    private Warehouse() { }
+
+    public static Warehouse getInstance() {
+        if (instance == null) {
+            instance = new Warehouse();
+        }
+        return instance;
+    }
+
     public EllipseParameters get(Object key) {
         EllipseParameters params = ellipseMap.get(key);
         logger.log(Level.INFO, "get params " + params + " by id " + key);
@@ -34,13 +43,6 @@ public class Warehouse {
 
     public EllipseParameters remove(Object key) {
         return ellipseMap.remove(key);
-    }
-
-    public static Warehouse getInstance() {
-        if (instance == null) {
-            instance = new Warehouse();
-        }
-        return instance;
     }
 
     @Override

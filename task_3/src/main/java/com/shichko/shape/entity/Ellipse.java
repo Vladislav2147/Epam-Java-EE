@@ -12,14 +12,16 @@ public class Ellipse implements EllipseObservable {
     private EllipseObserver observer;
 
     public Ellipse(Point firstPoint, Point secondPoint) {
-        //TODO remove it?
-        this.ellipseId = IdGenerator.generateId();
-        this.firstPoint = firstPoint;
-        this.secondPoint = secondPoint;
+        this.firstPoint = firstPoint.clone();
+        this.secondPoint = secondPoint.clone();
     }
 
     public long getEllipseId() {
         return ellipseId;
+    }
+
+    public void setEllipseId(long ellipseId) {
+        this.ellipseId = ellipseId;
     }
 
     public Point getFirstPoint() {
