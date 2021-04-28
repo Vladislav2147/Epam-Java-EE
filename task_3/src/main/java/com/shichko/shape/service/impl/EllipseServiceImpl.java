@@ -24,7 +24,7 @@ public class EllipseServiceImpl implements EllipseService {
         double axisX = getAxisXLength(ellipse);
         double axisY = getAxisYLength(ellipse);
 
-        boolean isEllipse = axisX == 0 || axisY == 0;
+        boolean isEllipse = axisX != 0 && axisY != 0;
         logger.log(Level.INFO, "Ellipse " + ellipse + " is ellipse: " + isEllipse);
         return isEllipse;
     }
