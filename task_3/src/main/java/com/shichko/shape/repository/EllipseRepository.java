@@ -3,6 +3,7 @@ package com.shichko.shape.repository;
 import com.shichko.shape.entity.Ellipse;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,10 @@ public class EllipseRepository {
 
     public int indexOf(Object o) {
         return ellipses.indexOf(o);
+    }
+
+    public void sort(Comparator<? super Ellipse> c) {
+        ellipses.sort(c);
     }
 
     public List<Ellipse> query(Specification specification) {

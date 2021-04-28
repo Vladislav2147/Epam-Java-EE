@@ -39,13 +39,13 @@ public class EllipseServiceImpl implements EllipseService {
         return perimeter;
     }
 
-    public double square(Ellipse ellipse) {
+    public double area(Ellipse ellipse) {
         double semiAxisX = getAxisXLength(ellipse) / 2;
         double semiAxisY = getAxisYLength(ellipse) / 2;
 
-        double square = semiAxisX * semiAxisY * Math.PI;
-        logger.log(Level.INFO, "Ellipse " + ellipse + " square: " + square);
-        return square;
+        double area = semiAxisX * semiAxisY * Math.PI;
+        logger.log(Level.INFO, "Ellipse " + ellipse + " area: " + area);
+        return area;
     }
 
     public boolean isIntersectAnyAxisOnLength(Ellipse ellipse, double length) {

@@ -5,9 +5,9 @@ import com.shichko.shape.repository.Specification;
 
 public class IdSpecification implements Specification {
 
-    private int id;
+    private long id;
 
-    public IdSpecification(int id) {
+    public IdSpecification(long id) {
         this.id = id;
     }
 

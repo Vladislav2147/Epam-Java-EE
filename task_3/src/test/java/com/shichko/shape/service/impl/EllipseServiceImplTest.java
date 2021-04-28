@@ -5,6 +5,10 @@ import com.shichko.shape.entity.Point;
 import com.shichko.shape.service.EllipseService;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.testng.Assert.*;
 
 public class EllipseServiceImplTest {
@@ -21,6 +25,7 @@ public class EllipseServiceImplTest {
 
     @Test
     public void testPerimeter() {
+
     }
 
     @Test

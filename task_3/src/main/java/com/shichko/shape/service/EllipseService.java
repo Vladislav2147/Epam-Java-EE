@@ -9,6 +9,6 @@ public interface EllipseService {
     boolean isIntersectAnyAxisOnLength(Ellipse ellipse, double length);
     boolean isPointInsideEllipse(Ellipse ellipse, Point point);
     double perimeter(Ellipse ellipse);
-    double square(Ellipse ellipse);
+    double area(Ellipse ellipse);
 
 }

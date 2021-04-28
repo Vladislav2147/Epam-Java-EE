@@ -1,38 +1,61 @@
 package com.shichko.shape.entity;
 
-public class Ellipse {
-    private int ellipseId;
+import com.shichko.shape.observer.EllipseEvent;
+import com.shichko.shape.observer.EllipseObservable;
+import com.shichko.shape.observer.EllipseObserver;
+import com.shichko.shape.util.IdGenerator;
+
+public class Ellipse implements EllipseObservable {
+    private long ellipseId;
     private Point firstPoint;
     private Point secondPoint;
+    private EllipseObserver observer;
 
-    public Ellipse(int ellipseId, Point firstPoint, Point secondPoint) {
-        this.ellipseId = ellipseId;
+    public Ellipse(Point firstPoint, Point secondPoint) {
+        //TODO remove it?
+        this.ellipseId = IdGenerator.generateId();
         this.firstPoint = firstPoint;
         this.secondPoint = secondPoint;
     }
 
-    public int getEllipseId() {
+    public long getEllipseId() {
         return ellipseId;
     }
 
-    public void setEllipseId(int ellipseId) {
-        this.ellipseId = ellipseId;
-    }
-
     public Point getFirstPoint() {
-        return new Point(firstPoint);
+        return firstPoint.clone();
     }
 
     public void setFirstPoint(Point firstPoint) {
         this.firstPoint = firstPoint;
+        notifyObservers();
     }
 
     public Point getSecondPoint() {
-        return new Point(secondPoint);
+        return secondPoint.clone();
     }
 
     public void setSecondPoint(Point secondPoint) {
         this.secondPoint = secondPoint;
+        notifyObservers();
+    }
+
+    @Override
+    public void attach(EllipseObserver observer) {
+        this.observer = observer;
+    }
+
+    @Override
+    public void detach() {
+        this.observer = null;
+    }
+
+    @Override
+    public void notifyObservers() {
+        if (observer != null) {
+            EllipseEvent event = new EllipseEvent(this);
+            observer.parameterChanged(event);
+        }
     }
 
     @Override
@@ -49,7 +72,7 @@ public class Ellipse {
 
     @Override
     public int hashCode() {
-        int result = ellipseId;
+        int result = (int) (ellipseId ^ (ellipseId >>> 32));
         result = 31 * result + firstPoint.hashCode();
         result = 31 * result + secondPoint.hashCode();
         return result;
