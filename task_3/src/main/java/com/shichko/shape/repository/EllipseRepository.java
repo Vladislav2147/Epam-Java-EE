@@ -11,6 +11,8 @@ public interface EllipseRepository {
 
     List<Ellipse> getAll();
 
+    int size();
+
     void forEach(Consumer<Ellipse> action);
 
     boolean remove(Ellipse ellipse);

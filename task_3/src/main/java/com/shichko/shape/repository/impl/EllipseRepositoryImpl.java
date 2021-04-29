@@ -16,6 +16,12 @@ public class EllipseRepositoryImpl implements EllipseRepository {
         return new ArrayList<>(ellipses);
     }
 
+    @Override
+    public int size() {
+        return ellipses.size();
+    }
+
+    @Override
     public void forEach(Consumer<Ellipse> action) {
         ellipses.forEach(action);
     }
