@@ -5,9 +5,11 @@ import com.shichko.shape.entity.Ellipse;
 import com.shichko.shape.entity.Point;
 import com.shichko.shape.exception.EllipseException;
 import com.shichko.shape.repository.EllipseRepository;
+import com.shichko.shape.repository.Specification;
 import com.shichko.shape.repository.comparator.EllipseAreaDescendingComparator;
 import com.shichko.shape.repository.comparator.EllipseFirstPointXComparator;
 import com.shichko.shape.repository.comparator.EllipseIdComparator;
+import com.shichko.shape.util.IdGenerator;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -24,15 +26,15 @@ public class EllipseRepositoryImplTest {
 
     @BeforeMethod
     public void initRepository() throws EllipseException {
+        IdGenerator.reset();
         repository = new EllipseRepositoryImpl();
         ellipses = new ArrayList<>();
-        ellipses.add(EllipseCreator.createFromPoints(new Point(-1, 2), new Point(1, -2)));
-        ellipses.add(EllipseCreator.createFromPoints(new Point(-2, 2), new Point(2, -2)));
+        ellipses.add(EllipseCreator.createFromPoints(new Point(-1, 2), new Point(1, -2))); //Contains (0, 0)
+        ellipses.add(EllipseCreator.createFromPoints(new Point(-2, 2), new Point(2, -2))); //Circle, Contains (0, 0)
         ellipses.add(EllipseCreator.createFromPoints(new Point(4, 6), new Point(6, 2)));
-        ellipses.add(EllipseCreator.createFromPoints(new Point(-5, 2), new Point(1, -4)));
+        ellipses.add(EllipseCreator.createFromPoints(new Point(-5, 2), new Point(1, -4))); //Circle, Contains (0, 0)
         ellipses.add(EllipseCreator.createFromPoints(new Point(-23, 5), new Point(6, 0)));
-        ellipses.add(EllipseCreator.createFromPoints(new Point(0, 0), new Point(1000, -1000)));
-
+        ellipses.add(EllipseCreator.createFromPoints(new Point(0, 0), new Point(1000, -1000))); //Circle
 
         repository.addAll(ellipses);
     }
@@ -66,6 +68,30 @@ public class EllipseRepositoryImplTest {
     }
 
     @Test
-    public void testQuery() {
+    public void testQueryIdSpecificationReturnsEllipseById() {
+        long id = 2;
+        Specification idSpecification = new IdSpecification(id);
+
+        Ellipse ellipseById = repository.query(idSpecification).stream().findFirst().get();
+        assertEquals(ellipseById.getEllipseId(), id);
+    }
+
+    @Test
+    public void testQueryCircleSpecificationReturnsOnlyCircles() {
+        int expectedCirclesAmount = 3;
+        Specification circleSpecification = new CircleSpecification();
+
+        int actualCirclesAmount = repository.query(circleSpecification).size();
+        assertEquals(actualCirclesAmount, expectedCirclesAmount);
+    }
+
+    @Test
+    public void testQueryPointInsideEllipseReturnsOnlyEllipsesContainsPoint() {
+        Point point = new Point(0,0);
+        int expectedEllipsesContainsPointAmount = 3;
+        Specification pointInsideEllipseSpecification = new PointInsideEllipseSpecification(point);
+
+        int actualEllipsesContainsPointAmount = repository.query(pointInsideEllipseSpecification).size();
+        assertEquals(actualEllipsesContainsPointAmount, expectedEllipsesContainsPointAmount);
     }
 }
