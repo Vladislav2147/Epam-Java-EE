@@ -1,7 +1,6 @@
 package com.shichko.shape.observer.impl;
 
 import com.shichko.shape.entity.Ellipse;
-import com.shichko.shape.entity.EllipseParameters;
 import com.shichko.shape.entity.Warehouse;
 import com.shichko.shape.exception.EllipseException;
 import com.shichko.shape.observer.EllipseEvent;

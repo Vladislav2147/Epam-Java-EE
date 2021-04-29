@@ -89,7 +89,7 @@ public class EllipseRepositoryImpl implements EllipseRepository {
         List<Ellipse> list = ellipses
                 .stream()
                 .filter(specification::specify)
-                .collect(Collectors.toList());;
+                .collect(Collectors.toList());
         return list;
     }
 }

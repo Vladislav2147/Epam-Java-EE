@@ -6,7 +6,6 @@ import com.shichko.shape.exception.EllipseException;
 import com.shichko.shape.parser.EllipseParser;
 import com.shichko.shape.repository.EllipseRepository;
 import com.shichko.shape.repository.impl.EllipseRepositoryImpl;
-import com.shichko.shape.validator.EllipseStringValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -9,7 +9,6 @@ import com.shichko.shape.repository.Specification;
 import com.shichko.shape.repository.comparator.EllipseAreaDescendingComparator;
 import com.shichko.shape.repository.comparator.EllipseFirstPointXComparator;
 import com.shichko.shape.repository.comparator.EllipseIdComparator;
-import com.shichko.shape.util.IdGenerator;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

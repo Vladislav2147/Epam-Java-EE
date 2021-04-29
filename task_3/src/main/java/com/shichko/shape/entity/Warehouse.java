@@ -34,8 +34,8 @@ public class Warehouse {
         return params;
     }
 
-    public EllipseParameters remove(Object key) {
-        return ellipseMap.remove(key);
+    public EllipseParameters remove(Long id) {
+        return ellipseMap.remove(id);
     }
 
     public void updateParamsById(long id, double perimeter, double area) throws EllipseException {
