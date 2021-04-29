@@ -13,7 +13,9 @@ public class Warehouse {
     private static Warehouse instance;
     private Map<Long, EllipseParameters> ellipseMap = new HashMap<>();
 
-    private Warehouse() { }
+    private Warehouse() {
+
+    }
 
     public static Warehouse getInstance() {
         if (instance == null) {
@@ -43,6 +45,8 @@ public class Warehouse {
         if (parameters == null) {
             throw new EllipseException("params by id" + id + " are not found in warehouse");
         }
+        parameters.setPerimeter(perimeter);
+        parameters.setArea(area);
     }
 
     @Override
