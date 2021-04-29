@@ -19,7 +19,6 @@ public class EllipseObserverImpl implements EllipseObserver {
     @Override
     public void parameterChanged(EllipseEvent event) {
         Ellipse ellipse = event.getSource();
-        Warehouse warehouse = Warehouse.getInstance();
         EllipseService service = new EllipseServiceImpl();
 
         double perimeter = service.perimeter(ellipse);
@@ -27,6 +26,7 @@ public class EllipseObserverImpl implements EllipseObserver {
         long id = ellipse.getEllipseId();
 
         try {
+            Warehouse warehouse = Warehouse.getInstance();
             warehouse.updateParamsById(id, perimeter, area);
             logger.log(Level.INFO, "Successful updated params perimeter=" + perimeter + " area=" + area + " by id=" + id);
         } catch (EllipseException e) {

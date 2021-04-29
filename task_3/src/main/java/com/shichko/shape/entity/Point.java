@@ -25,6 +25,7 @@ public class Point implements Cloneable {
         this.y = y;
     }
 
+    @Override
     public Point clone() {
         Point point = new Point(this.x, this.y);
         return point;

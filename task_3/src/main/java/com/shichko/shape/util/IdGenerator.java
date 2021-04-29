@@ -9,7 +9,4 @@ public class IdGenerator {
         return ++counter;
     }
 
-    public static void reset() {
-        counter = 0;
-    }
 }

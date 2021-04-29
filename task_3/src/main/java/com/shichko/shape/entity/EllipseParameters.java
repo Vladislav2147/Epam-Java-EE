@@ -32,7 +32,8 @@ public class EllipseParameters {
 
         EllipseParameters that = (EllipseParameters) o;
 
-        return that.area == area && that.perimeter == perimeter;
+        if (Double.compare(that.perimeter, perimeter) != 0) return false;
+        return Double.compare(that.area, area) == 0;
     }
 
     @Override

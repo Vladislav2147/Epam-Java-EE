@@ -14,13 +14,13 @@ public class EllipseParser {
 
     private final static String SPACE_DELIMITER_REGEX = "\\s";
 
-    public double[] parse(String data) throws EllipseException {
-        if (!EllipseStringValidator.isCoordinateStringValid(data)) {
-            logger.log(Level.ERROR, "data \"" + data + "\" is not valid");
-            throw new EllipseException("data \"" + data + "\" is not valid");
+    public double[] parse(String ellipseCoordsString) throws EllipseException {
+        if (!EllipseStringValidator.isCoordinateStringValid(ellipseCoordsString)) {
+            logger.log(Level.ERROR, "data \"" + ellipseCoordsString + "\" is not valid");
+            throw new EllipseException("data \"" + ellipseCoordsString + "\" is not valid");
         }
 
-        String[] values = data.split(SPACE_DELIMITER_REGEX);
+        String[] values = ellipseCoordsString.split(SPACE_DELIMITER_REGEX);
         double[] coordinatesArray = new double[values.length];
 
         for (int i = 0; i < values.length; i++) {

@@ -6,7 +6,7 @@ public class EllipseStringValidator {
 
     private final static String ELLIPSE_COORDINATES_REGEXP = "^((-?\\d+\\.?\\d*)\\s){3}(-?\\d+\\.?\\d*)$";
 
-    public static boolean isCoordinateStringValid(String ellipseString) {
-        return ellipseString.matches(ELLIPSE_COORDINATES_REGEXP);
+    public static boolean isCoordinateStringValid(String ellipseCoordinatesString) {
+        return ellipseCoordinatesString.matches(ELLIPSE_COORDINATES_REGEXP);
     }
 }

@@ -29,6 +29,8 @@ public interface EllipseRepository {
 
     int indexOf(Ellipse ellipse);
 
+    void clear();
+
     void sort(Comparator<Ellipse> comparator);
 
     List<Ellipse> query(Specification specification);

@@ -25,9 +25,9 @@ public class EllipseRepositoryImplTest {
     private List<Ellipse> ellipses;
 
     @BeforeMethod
-    public void initRepository() throws EllipseException {
-        IdGenerator.reset();
-        repository = new EllipseRepositoryImpl();
+    public void fillRepository() throws EllipseException {
+        repository = EllipseRepositoryImpl.getInstance();
+        repository.clear();
         ellipses = new ArrayList<>();
         ellipses.add(EllipseCreator.createFromPoints(new Point(-1, 2), new Point(1, -2))); //Contains (0, 0)
         ellipses.add(EllipseCreator.createFromPoints(new Point(-2, 2), new Point(2, -2))); //Circle, Contains (0, 0)
@@ -69,7 +69,7 @@ public class EllipseRepositoryImplTest {
 
     @Test
     public void testQueryIdSpecificationReturnsEllipseById() {
-        long id = 2;
+        long id = repository.getAll().stream().findFirst().get().getEllipseId();
         Specification idSpecification = new IdSpecification(id);
 
         Ellipse ellipseById = repository.query(idSpecification).stream().findFirst().get();

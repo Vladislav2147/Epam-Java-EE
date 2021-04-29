@@ -9,7 +9,20 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class EllipseRepositoryImpl implements EllipseRepository {
+
+    private static EllipseRepositoryImpl instance;
     private List<Ellipse> ellipses = new ArrayList<>();
+
+    private EllipseRepositoryImpl() {
+
+    }
+
+    public static EllipseRepositoryImpl getInstance() {
+        if (instance == null) {
+            instance = new EllipseRepositoryImpl();
+        }
+        return instance;
+    }
 
     @Override
     public List<Ellipse> getAll() {
@@ -59,6 +72,11 @@ public class EllipseRepositoryImpl implements EllipseRepository {
     @Override
     public int indexOf(Ellipse ellipse) {
         return ellipses.indexOf(ellipse);
+    }
+
+    @Override
+    public void clear() {
+        ellipses.clear();
     }
 
     @Override

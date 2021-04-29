@@ -22,8 +22,7 @@ public class EllipseFileReader {
         Path filepath = Paths.get(filename);
         try {
             lines = Files
-                    .readAllLines(filepath)
-                    .stream()
+                    .lines(filepath)
                     .filter(EllipseStringValidator::isCoordinateStringValid)
                     .collect(Collectors.toList());
         } catch (IOException e) {

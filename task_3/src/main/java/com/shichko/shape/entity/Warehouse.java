@@ -22,16 +22,20 @@ public class Warehouse {
         return instance;
     }
 
-    public EllipseParameters get(Object key) {
-        EllipseParameters params = ellipseMap.get(key);
-        logger.log(Level.INFO, "get params " + params + " by id " + key);
+    public EllipseParameters get(Long id) {
+        EllipseParameters params = ellipseMap.get(id);
+        logger.log(Level.INFO, "get params " + params + " by id " + id);
         return params;
     }
 
-    public EllipseParameters put(Long key, EllipseParameters value) {
-        EllipseParameters params = ellipseMap.put(key, value);
-        logger.log(Level.INFO, "put params " + value + "to id " + key + "; returned " + params);
+    public EllipseParameters put(Long id, EllipseParameters value) {
+        EllipseParameters params = ellipseMap.put(id, value);
+        logger.log(Level.INFO, "put params " + value + "to id " + id + "; returned " + params);
         return params;
+    }
+
+    public EllipseParameters remove(Object key) {
+        return ellipseMap.remove(key);
     }
 
     public void updateParamsById(long id, double perimeter, double area) throws EllipseException {
@@ -39,10 +43,6 @@ public class Warehouse {
         if (parameters == null) {
             throw new EllipseException("params by id" + id + " are not found in warehouse");
         }
-    }
-
-    public EllipseParameters remove(Object key) {
-        return ellipseMap.remove(key);
     }
 
     @Override

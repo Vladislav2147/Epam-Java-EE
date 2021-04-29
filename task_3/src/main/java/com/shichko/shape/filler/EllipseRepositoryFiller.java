@@ -1,5 +1,6 @@
-package com.shichko.shape.creator;
+package com.shichko.shape.filler;
 
+import com.shichko.shape.creator.EllipseCreator;
 import com.shichko.shape.entity.Ellipse;
 import com.shichko.shape.exception.EllipseException;
 import com.shichko.shape.parser.EllipseParser;
@@ -12,27 +13,24 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-public class EllipseRepositoryCreator {
+public class EllipseRepositoryFiller {
 
     private final static Logger logger = LogManager.getLogger();
 
-    private EllipseRepositoryCreator() { }
+    private EllipseRepositoryFiller() { }
 
-    public static EllipseRepository createFromEllipseList(List<Ellipse> ellipseList) {
-        EllipseRepository repository = new EllipseRepositoryImpl();
+    public static EllipseRepository fillFromEllipseList(List<Ellipse> ellipseList) {
+        EllipseRepository repository = EllipseRepositoryImpl.getInstance();
         repository.addAll(ellipseList);
         logger.log(Level.INFO, "Created EllipseRepository " + repository);
         return repository;
     }
 
-    public static EllipseRepository createFromStringList(List<String> values) throws EllipseException {
+    public static EllipseRepository fillFromStringList(List<String> values) throws EllipseException {
         EllipseParser parser = new EllipseParser();
-        EllipseRepository repository = new EllipseRepositoryImpl();
+        EllipseRepository repository = EllipseRepositoryImpl.getInstance();
 
         for (String value: values) {
-            if (!EllipseStringValidator.isCoordinateStringValid(value)) {
-                throw new EllipseException("Coordinate string \"" + value + "\" is not valid");
-            }
             double[] coordinates = parser.parse(value);
             Ellipse ellipse = EllipseCreator.createFromCoordinatesArray(coordinates);
             repository.add(ellipse);

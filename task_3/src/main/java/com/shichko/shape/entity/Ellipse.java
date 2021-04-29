@@ -3,7 +3,6 @@ package com.shichko.shape.entity;
 import com.shichko.shape.observer.EllipseEvent;
 import com.shichko.shape.observer.EllipseObservable;
 import com.shichko.shape.observer.EllipseObserver;
-import com.shichko.shape.util.IdGenerator;
 
 public class Ellipse implements EllipseObservable {
     private long ellipseId;
@@ -69,7 +68,8 @@ public class Ellipse implements EllipseObservable {
 
         if (ellipseId != ellipse.ellipseId) return false;
         if (!firstPoint.equals(ellipse.firstPoint)) return false;
-        return secondPoint.equals(ellipse.secondPoint);
+        if (!secondPoint.equals(ellipse.secondPoint)) return false;
+        return observer != null ? observer.equals(ellipse.observer) : ellipse.observer == null;
     }
 
     @Override
@@ -77,15 +77,18 @@ public class Ellipse implements EllipseObservable {
         int result = (int) (ellipseId ^ (ellipseId >>> 32));
         result = 31 * result + firstPoint.hashCode();
         result = 31 * result + secondPoint.hashCode();
+        result = 31 * result + (observer != null ? observer.hashCode() : 0);
         return result;
     }
+
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Ellipse{");
         sb.append("ellipseId=").append(ellipseId);
-        sb.append(", p1=").append(firstPoint);
-        sb.append(", p2=").append(secondPoint);
+        sb.append(", firstPoint=").append(firstPoint);
+        sb.append(", secondPoint=").append(secondPoint);
+        sb.append(", observer=").append(observer);
         sb.append('}');
         return sb.toString();
     }
