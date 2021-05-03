@@ -15,11 +15,12 @@ public interface EllipseRepository {
 
     void forEach(Consumer<Ellipse> action);
 
-    boolean remove(Ellipse ellipse);
-
     boolean addAll(Collection<Ellipse> ellipses);
 
     boolean add(Ellipse ellipse);
+
+
+    boolean remove(Ellipse ellipse);
 
     boolean removeAll(Collection<Ellipse> ellipses);
 

@@ -40,11 +40,6 @@ public class EllipseRepositoryImpl implements EllipseRepository {
     }
 
     @Override
-    public boolean remove(Ellipse ellipse) {
-        return ellipses.remove(ellipse);
-    }
-
-    @Override
     public boolean addAll(Collection<Ellipse> ellipses) {
         return this.ellipses.addAll(ellipses);
     }
@@ -52,6 +47,11 @@ public class EllipseRepositoryImpl implements EllipseRepository {
     @Override
     public boolean add(Ellipse ellipse) {
         return this.ellipses.add(ellipse);
+    }
+
+    @Override
+    public boolean remove(Ellipse ellipse) {
+        return ellipses.remove(ellipse);
     }
 
     @Override
