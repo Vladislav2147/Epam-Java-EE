@@ -1,4 +1,4 @@
-package com.shichko.composite.entity.impl;
+package com.shichko.composite.entity;
 
 public enum TextCompositeType {
     TEXT,

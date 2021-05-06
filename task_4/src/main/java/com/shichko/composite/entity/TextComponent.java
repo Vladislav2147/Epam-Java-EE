@@ -4,6 +4,7 @@ public interface TextComponent {
 
     void add(TextComponent textComponent);
     void remove(TextComponent textComponent);
+    int size();
     TextComponent getChild(int index);
 
 }
