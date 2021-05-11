@@ -62,10 +62,7 @@ public class TextCharacter implements TextComponent {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("TextCharacter{");
-        sb.append("value=").append(value);
-        sb.append(", characterType=").append(characterType);
-        sb.append('}');
-        return sb.toString();
+        String stringOfValue = Character.toString(value);
+        return stringOfValue;
     }
 }

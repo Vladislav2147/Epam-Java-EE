@@ -69,10 +69,10 @@ public class TextComposite implements TextComponent {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("TextComposite{");
-        sb.append("compositeType=").append(compositeType);
-        sb.append(", components=").append(components);
-        sb.append('}');
+        final StringBuilder sb = new StringBuilder();
+        for (TextComponent child: components) {
+            sb.append(child);
+        }
         return sb.toString();
     }
 }
