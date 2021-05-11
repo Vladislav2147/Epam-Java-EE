@@ -6,5 +6,6 @@ public interface TextComponent {
     void remove(TextComponent textComponent);
     int size();
     TextComponent getChild(int index);
+    String toString();
 
 }
