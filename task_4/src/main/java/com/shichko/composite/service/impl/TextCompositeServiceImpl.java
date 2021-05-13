@@ -1,6 +1,6 @@
 package com.shichko.composite.service.impl;
 
-import com.shichko.composite.comparator.TextCompositeSizeComparator;
+import com.shichko.composite.comparator.TextComponentSizeComparator;
 import com.shichko.composite.entity.*;
 import com.shichko.composite.exception.TextCompositeException;
 import com.shichko.composite.service.TextCompositeService;
@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class TextCompositeServiceImpl implements TextCompositeService {
@@ -26,7 +25,7 @@ public class TextCompositeServiceImpl implements TextCompositeService {
         }
 
         List<TextComponent> paragraphs = text.getComponents();
-        paragraphs.sort(Comparator.comparingInt(TextComponent::size));
+        paragraphs.sort(new TextComponentSizeComparator());
         text.setComponents(paragraphs);
 
         logger.log(Level.INFO, "Text with sorted paragraphs by sentence amount: \n" + text);
@@ -208,7 +207,7 @@ public class TextCompositeServiceImpl implements TextCompositeService {
 
         int maxLength = words
                 .stream()
-                .max(new TextCompositeSizeComparator())
+                .max(new TextComponentSizeComparator())
                 .map(TextComposite::size)
                 .orElse(0);
         logger.log(Level.INFO, "Max word length is " + maxLength + " in sentence: " + sentence);
