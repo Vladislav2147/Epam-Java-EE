@@ -5,17 +5,15 @@ public class Ship extends Thread {
     private final long shipId;
     private int containersAmount;
     private int capacity;
-    private State shipState;
+    private ShipState shipState;
+    private ShipOperation shipOperation;
 
-    public enum State {
-        NEW, PROCESSING, FINISHED
-    }
-
-    public Ship(long shipId, int containersAmount, int capacity, State shipState) {
+    public Ship(long shipId, int containersAmount, int capacity, ShipState shipState, ShipOperation shipOperation) {
         this.shipId = shipId;
         this.containersAmount = containersAmount;
         this.capacity = capacity;
         this.shipState = shipState;
+        this.shipOperation = shipOperation;
     }
 
     public long getShipId() {
@@ -38,12 +36,20 @@ public class Ship extends Thread {
         this.capacity = capacity;
     }
 
-    public State getShipState() {
+    public ShipState getShipState() {
         return shipState;
     }
 
-    public void setShipState(State shipState) {
+    public void setShipState(ShipState shipState) {
         this.shipState = shipState;
+    }
+
+    public ShipOperation getShipOperation() {
+        return shipOperation;
+    }
+
+    public void setShipOperation(ShipOperation shipOperation) {
+        this.shipOperation = shipOperation;
     }
 
     public void addContainerToShip() {
@@ -55,7 +61,7 @@ public class Ship extends Thread {
     }
 
     @Override
-    public void run() {//TODO without throws
+    public void run() {
         Port port = Port.getInstance();
 
     }
@@ -70,7 +76,8 @@ public class Ship extends Thread {
         if (shipId != ship.shipId) return false;
         if (containersAmount != ship.containersAmount) return false;
         if (capacity != ship.capacity) return false;
-        return shipState == ship.shipState;
+        if (shipState != ship.shipState) return false;
+        return shipOperation == ship.shipOperation;
     }
 
     @Override
@@ -79,8 +86,10 @@ public class Ship extends Thread {
         result = 31 * result + containersAmount;
         result = 31 * result + capacity;
         result = 31 * result + shipState.hashCode();
+        result = 31 * result + shipOperation.hashCode();
         return result;
     }
+
 
     @Override
     public String toString() {
@@ -89,6 +98,7 @@ public class Ship extends Thread {
         sb.append(", containersAmount=").append(containersAmount);
         sb.append(", capacity=").append(capacity);
         sb.append(", shipState=").append(shipState);
+        sb.append(", shipOperation=").append(shipOperation);
         sb.append('}');
         return sb.toString();
     }
