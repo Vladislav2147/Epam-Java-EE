@@ -23,11 +23,11 @@ public class Port {
     private static final AtomicBoolean isCreated = new AtomicBoolean(false);
     private static Port portInstance;
 
-    private Deque<Ship> shipsQueue;
-    private Deque<Dock> portDocks;
-    private ReentrantLock portDocksLock = new ReentrantLock();
-    private Condition portDocksCondition = portDocksLock.newCondition();
-    private AtomicInteger containerCount = new AtomicInteger((int)(PORT_CAPACITY * LOAD_FACTOR));
+    private final Deque<Ship> shipsQueue;
+    private final Deque<Dock> portDocks;
+    private final ReentrantLock portDocksLock = new ReentrantLock();
+    private final Condition portDocksCondition = portDocksLock.newCondition();
+    private final AtomicInteger containerCount = new AtomicInteger((int)(PORT_CAPACITY * LOAD_FACTOR));
 
     private Port() {
         shipsQueue = new ArrayDeque<>();
