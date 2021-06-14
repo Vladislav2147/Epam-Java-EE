@@ -2,29 +2,36 @@ package com.shichko.multithreading.main;
 
 import com.shichko.multithreading.entity.Port;
 import com.shichko.multithreading.entity.Ship;
-import com.shichko.multithreading.entity.ShipOperation;
-import com.shichko.multithreading.entity.ShipState;
+import com.shichko.multithreading.exception.ShipException;
+import com.shichko.multithreading.parser.ShipParser;
+import com.shichko.multithreading.reader.ShipFileReader;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class Main {
+
+    private static final Logger logger = LogManager.getLogger();
+
     public static void main(String[] args) {
-        List<Ship> ships = new ArrayList<>();
-        ships.add(new Ship(1, 0, 1500, ShipState.NEW, ShipOperation.LOAD));
-        ships.add(new Ship(1, 1500, 1500, ShipState.NEW, ShipOperation.UNLOAD));
-//        ships.add(new Ship(2, 20, 45, ShipState.NEW, ShipOperation.UNLOAD));
-//        ships.add(new Ship(3, 15, 50, ShipState.NEW, ShipOperation.LOAD));
-//        ships.add(new Ship(4, 10, 33, ShipState.NEW, ShipOperation.LOAD));
-//        ships.add(new Ship(5, 21, 25, ShipState.NEW, ShipOperation.UNLOAD));
+        try {
+            ShipFileReader reader = new ShipFileReader();
+            String shipsFromFile = reader.readFileAsString(Paths.get("src/main/resources/data/ships.json"));
+            ShipParser parser = new ShipParser();
+            List<Ship> ships = parser.parse(shipsFromFile);
 
-        Port port = Port.getInstance();
-        for (Ship ship: ships) {
-            port.addShipToQueue(ship);
+            Port port = Port.getInstance();
+            for (Ship ship: ships) {
+                port.addShipToQueue(ship);
+            }
+
+            port.startProcessing();
+        } catch (ShipException e) {
+            logger.log(Level.ERROR, "ShipException in main", e);
         }
-
-        port.startProcessing();
-
 
     }
 }

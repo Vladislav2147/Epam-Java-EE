@@ -1,29 +1,32 @@
 package com.shichko.multithreading.entity;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.Optional;
+import java.util.concurrent.Callable;
 
-public class Ship extends Thread {
+public class Ship implements Callable<Ship> {
 
-    private final long shipId;
+    private long shipId;
     private int containersAmount;
     private int capacity;
     private ShipState shipState;
     private ShipOperation shipOperation;
 
-    public Ship(long shipId, int containersAmount, int capacity, ShipState shipState, ShipOperation shipOperation) {
+    public Ship(long shipId, int containersAmount, int capacity, ShipOperation shipOperation) {
         this.shipId = shipId;
         this.containersAmount = containersAmount;
         this.capacity = capacity;
-        this.shipState = shipState;
         this.shipOperation = shipOperation;
+    }
+
+    public Ship() {
     }
 
     public long getShipId() {
         return shipId;
+    }
+
+    public void setShipId(long shipId) {
+        this.shipId = shipId;
     }
 
     public int getContainersAmount() {
@@ -67,7 +70,7 @@ public class Ship extends Thread {
     }
 
     @Override
-    public void run() {
+    public Ship call() {
         Port port = Port.getInstance();
         Optional<Dock> optionalDock = port.findDock();
         if (optionalDock.isPresent()) {
@@ -75,6 +78,7 @@ public class Ship extends Thread {
             dock.process(this);
             port.releaseDock(dock);
         }
+        return this;
     }
 
     @Override
@@ -100,7 +104,6 @@ public class Ship extends Thread {
         result = 31 * result + shipOperation.hashCode();
         return result;
     }
-
 
     @Override
     public String toString() {

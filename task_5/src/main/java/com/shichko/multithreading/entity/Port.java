@@ -14,13 +14,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static com.shichko.multithreading.reader.PortPropertiesReader.*;
+
 public class Port {
 
     private static final Logger logger = LogManager.getLogger();
-    //TODO magic numbers
-    private static final int DOCKS_AMOUNT = 2;
-    private static final int PORT_CAPACITY = 1000;
-    private static final double LOAD_FACTOR = 0.5;
+
     private static final AtomicBoolean isCreated = new AtomicBoolean(false);
     private static Port portInstance;
 
@@ -29,8 +28,6 @@ public class Port {
     private ReentrantLock portDocksLock = new ReentrantLock();
     private Condition portDocksCondition = portDocksLock.newCondition();
     private AtomicInteger containerCount = new AtomicInteger((int)(PORT_CAPACITY * LOAD_FACTOR));
-
-    //TODO resource bundle
 
     private Port() {
         shipsQueue = new ArrayDeque<>();
@@ -56,6 +53,7 @@ public class Port {
 
     public void addShipToQueue(Ship ship) {
         shipsQueue.add(ship);
+        ship.setShipState(ShipState.NEW);
     }
 
     public void startProcessing() {
@@ -95,7 +93,7 @@ public class Port {
         } finally {
             portDocksLock.unlock();
         }
-        logger.log(Level.INFO, "Return dock: " + dock);
+        logger.log(Level.INFO, "Dock found: " + dock);
         return Optional.ofNullable(dock);
     }
 

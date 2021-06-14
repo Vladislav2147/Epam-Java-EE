@@ -1,0 +1,51 @@
+[ {
+  "shipId" : 1,
+  "containersAmount" : 0,
+  "capacity" : 50,
+  "shipOperation" : "LOAD"
+}, {
+  "shipId" : 2,
+  "containersAmount" : 20,
+  "capacity" : 45,
+  "shipOperation" : "UNLOAD"
+}, {
+  "shipId" : 3,
+  "containersAmount" : 15,
+  "capacity" : 50,
+  "shipOperation" : "LOAD"
+}, {
+  "shipId" : 4,
+  "containersAmount" : 10,
+  "capacity" : 33,
+  "shipOperation" : "LOAD"
+}, {
+  "shipId" : 5,
+  "containersAmount" : 21,
+  "capacity" : 25,
+  "shipOperation" : "UNLOAD"
+}, {
+  "shipId" : 6,
+  "containersAmount" : 630,
+  "capacity" : 700,
+  "shipOperation" : "UNLOAD"
+}, {
+  "shipId" : 7,
+  "containersAmount" : 13,
+  "capacity" : 25,
+  "shipOperation" : "LOAD"
+}, {
+  "shipId" : 8,
+  "containersAmount" : 17,
+  "capacity" : 25,
+  "shipOperation" : "UNLOAD"
+}, {
+  "shipId" : 9,
+  "containersAmount" : 19,
+  "capacity" : 25,
+  "shipOperation" : "LOAD"
+}, {
+  "shipId" : 10,
+  "containersAmount" : 2,
+  "capacity" : 25,
+  "shipOperation" : "UNLOAD"
+} ]

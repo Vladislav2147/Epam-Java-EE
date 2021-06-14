@@ -6,11 +6,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.shichko.multithreading.reader.PortPropertiesReader.PROCESSING_TIME_MILLIS;
+
 public class Dock {
 
     private static final Logger logger = LogManager.getLogger();
-    //TODO magic number
-    private static final int PROCESSING_TIME = 10;
+
     private final long dockId;
 
     public Dock(long dockId) {
@@ -30,7 +31,7 @@ public class Dock {
                 case LOAD:
                     while (ship.getContainersAmount() < ship.getCapacity()) {
                         port.removeContainerFromPort();
-                        TimeUnit.MILLISECONDS.sleep(PROCESSING_TIME);
+                        TimeUnit.MILLISECONDS.sleep(PROCESSING_TIME_MILLIS);
                         ship.addContainerToShip();
                     }
                     logger.log(Level.INFO, "Successful load of ship: " + ship + " at dock: " + this +
@@ -39,7 +40,7 @@ public class Dock {
                 case UNLOAD:
                     while (ship.getContainersAmount() > 0) {
                         ship.removeContainerFromShip();
-                        TimeUnit.MILLISECONDS.sleep(PROCESSING_TIME);
+                        TimeUnit.MILLISECONDS.sleep(PROCESSING_TIME_MILLIS);
                         port.addContainerToPort();
                     }
                     logger.log(Level.INFO, "Successful unload of ship: " + ship + " at dock: " + this +
