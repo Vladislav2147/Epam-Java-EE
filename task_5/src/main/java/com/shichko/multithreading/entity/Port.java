@@ -19,8 +19,8 @@ import static com.shichko.multithreading.reader.PortPropertiesReader.*;
 public class Port {
 
     private static final Logger logger = LogManager.getLogger();
-
     private static final AtomicBoolean isCreated = new AtomicBoolean(false);
+
     private static Port portInstance;
 
     private final Deque<Ship> shipsQueue;
@@ -108,5 +108,41 @@ public class Port {
             }
             logger.log(Level.INFO, "Dock released: " + dock);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Port port = (Port) o;
+
+        if (!shipsQueue.equals(port.shipsQueue)) return false;
+        if (!portDocks.equals(port.portDocks)) return false;
+        if (!portDocksLock.equals(port.portDocksLock)) return false;
+        if (!portDocksCondition.equals(port.portDocksCondition)) return false;
+        return containerCount.equals(port.containerCount);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = shipsQueue.hashCode();
+        result = 31 * result + portDocks.hashCode();
+        result = 31 * result + portDocksLock.hashCode();
+        result = 31 * result + portDocksCondition.hashCode();
+        result = 31 * result + containerCount.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Port{");
+        sb.append("shipsQueue=").append(shipsQueue);
+        sb.append(", portDocks=").append(portDocks);
+        sb.append(", portDocksLock=").append(portDocksLock);
+        sb.append(", portDocksCondition=").append(portDocksCondition);
+        sb.append(", containerCount=").append(containerCount);
+        sb.append('}');
+        return sb.toString();
     }
 }
