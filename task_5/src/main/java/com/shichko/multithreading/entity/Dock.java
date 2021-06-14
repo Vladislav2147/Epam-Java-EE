@@ -1,6 +1,5 @@
 package com.shichko.multithreading.entity;
 
-import com.shichko.multithreading.exception.ShipPortException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +8,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Dock {
 
-    private final static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
+    //TODO magic number
+    private static final int PROCESSING_TIME = 10;
     private final long dockId;
 
     public Dock(long dockId) {
@@ -22,30 +23,34 @@ public class Dock {
 
     public void process(Ship ship) {
         Port port = Port.getInstance();
+        ship.setShipState(ShipState.PROCESSING);
         ShipOperation operation = ship.getShipOperation();
         try {
             switch (operation) {
                 case LOAD:
                     while (ship.getContainersAmount() < ship.getCapacity()) {
                         port.removeContainerFromPort();
-                        TimeUnit.MILLISECONDS.sleep(100);
+                        TimeUnit.MILLISECONDS.sleep(PROCESSING_TIME);
                         ship.addContainerToShip();
                     }
+                    logger.log(Level.INFO, "Successful load of ship: " + ship + " at dock: " + this +
+                            ". Containers in the port: " + port.getContainerCount());
                     break;
                 case UNLOAD:
                     while (ship.getContainersAmount() > 0) {
                         ship.removeContainerFromShip();
-                        TimeUnit.MILLISECONDS.sleep(100);
+                        TimeUnit.MILLISECONDS.sleep(PROCESSING_TIME);
                         port.addContainerToPort();
                     }
+                    logger.log(Level.INFO, "Successful unload of ship: " + ship + " at dock: " + this +
+                            ". Containers in the port: " + port.getContainerCount());
                     break;
             }
-        } catch (ShipPortException e) {
-            logger.log(Level.ERROR, e);
         } catch (InterruptedException e) {
             logger.log(Level.ERROR, "InterruptedException on thread " + Thread.currentThread().getName(), e);
             Thread.currentThread().interrupt();
         }
+        ship.setShipState(ShipState.FINISHED);
     }
 
     @Override

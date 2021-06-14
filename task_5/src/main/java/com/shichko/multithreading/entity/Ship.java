@@ -1,5 +1,11 @@
 package com.shichko.multithreading.entity;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.Optional;
+
 public class Ship extends Thread {
 
     private final long shipId;
@@ -63,7 +69,12 @@ public class Ship extends Thread {
     @Override
     public void run() {
         Port port = Port.getInstance();
-
+        Optional<Dock> optionalDock = port.findDock();
+        if (optionalDock.isPresent()) {
+            Dock dock = optionalDock.get();
+            dock.process(this);
+            port.releaseDock(dock);
+        }
     }
 
     @Override
